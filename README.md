@@ -1,2 +1,2 @@
 # StreamEzy
-SE project :- Live Video Streaming Platform
+🖥️ SE project :- 🎞️ Live Video Streaming Platform 🎞️
