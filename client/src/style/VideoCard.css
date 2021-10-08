@@ -1,0 +1,21 @@
+.videocard{
+    background-color: tomato;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    margin: 1rem;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.videocard:hover{
+    background-color: rgb(161, 73, 212);
+    transform: scale(1.03);
+}
+
+@media screen and (max-width: 650px) {
+    .videocard{
+        width: 100vw;
+        height: 70vw;
+    }
+}
