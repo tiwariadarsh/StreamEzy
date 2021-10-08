@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router ,Switch,Route } from 'react-router-dom';
-import Navbarx from './components/Navbar';
+import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -12,11 +12,11 @@ function App() {
     <div className="App">
 
       <Router>
-      <Navbarx/>
-      <Sidebar/>
+        <Navbar/>
+        {window.innerWidth>650?<Sidebar/>:''}
       <Switch>
           <Route exact path="/">
-         <Home/>
+            <Home/>
           </Route>
           <Route exact path="/about">
             <About/>
