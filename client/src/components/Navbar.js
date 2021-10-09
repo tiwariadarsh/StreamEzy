@@ -4,7 +4,7 @@ import { Button, Navbar, Nav, Container } from "react-bootstrap";
 
 export default function Navbarx () {
   return (
-    <Navbar bg="dark" variant="dark" style={{ width: "100vw" }}>
+    <Navbar bg="dark" variant="dark" style={{ width:"100vw"}}>
       <Container>
         <Navbar.Brand href="/">
           <h4>StreamEzy</h4>
