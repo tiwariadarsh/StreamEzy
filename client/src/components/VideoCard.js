@@ -36,6 +36,7 @@ export default function VideoCard(prop) {
             />
             <div style={{height:"10%",backgroundColor:"red"}}>Hello1</div>
             <div style={{height:"10%",backgroundColor:"blue"}}>Hello2</div>
+            <div style={{height:"10%",backgroundColor:"yellow"}}>Hello3</div>
         </div>
     )
 }
