@@ -9,7 +9,7 @@ export default function VideoCard(prop) {
             <HoverVideoPlayer
                 style={{
                     width:"100%",
-                    height:"100%"
+                    height:"70%"
                 }}
                 videoSrc={video}
                 sizingMode='container'
@@ -34,6 +34,9 @@ export default function VideoCard(prop) {
                     </div>
                 }
             />
+            <div style={{height:"10%",backgroundColor:"red"}}>Hello1</div>
+            <div style={{height:"10%",backgroundColor:"blue"}}>Hello2</div>
+            <div style={{height:"10%",backgroundColor:"green"}}>Hello3</div>
         </div>
     )
 }
