@@ -1,6 +1,6 @@
 .videocard{
-    width: 32.333%;
-    height: 35vh;
+    width: 24%;
+    height: 28vh;
     margin: 0.5%;
     transition: all .3s ease-in-out;
     cursor: pointer;
@@ -14,6 +14,7 @@
 
 @media screen and (max-width: 800px) {
     .videocard{
+        width: 32.33%;
         height: 50vh;
     }
 }
