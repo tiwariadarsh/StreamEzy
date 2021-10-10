@@ -1,6 +1,6 @@
 .videocard{
-    width: 250px;
-    height: 250px;
+    width: 30%;
+    height: 35vh;
     margin: 1rem;
     transition: all .3s ease-in-out;
     cursor: pointer;
