@@ -1,16 +1,11 @@
 import React from "react";
 import { Button ,Nav,Navbar,Container} from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "../style/Navbar.css";
 
 export default function Navbarx () {
-<<<<<<< HEAD
-  return (   
-    <Navbar className="navbar">
-=======
   return (
     <Navbar bg="dark" variant="dark" style={{ width:"100vw"}}>
->>>>>>> 71659ad83d283ecaf52eff0cda26f38b7540de3c
+
       <Container>
         <Navbar.Brand href="/">
           <h2>StreamEzy</h2>
@@ -19,6 +14,9 @@ export default function Navbarx () {
         <Nav className="me-auto">
           <Nav.Link href="/about" className="m-auto" style={{color:"grey"}}>
             About
+          </Nav.Link>
+          <Nav.Link href="/viewpage" className="m-auto" style={{color:"white"}}>
+            Go Live
           </Nav.Link>
             <Nav.Link href="/login">
               <Button type="button" className="btn btn-outline-primary">
