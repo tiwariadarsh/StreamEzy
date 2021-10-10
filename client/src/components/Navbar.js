@@ -4,32 +4,24 @@ import "../style/Navbar.css";
 
 export default function Navbarx () {
   return (
-    <Navbar bg="dark" variant="dark" style={{ width:"100vw"}}>
-
-      <Container>
-        <Navbar.Brand href="/">
-          <h2>StreamEzy</h2>
-        </Navbar.Brand>
-
-        <Nav className="me-auto">
-          <Nav.Link href="/about" className="m-auto" style={{color:"grey"}}>
-            About
-          </Nav.Link>
-          <Nav.Link href="/viewpage" className="m-auto" style={{color:"white"}}>
-            Go Live
-          </Nav.Link>
-            <Nav.Link href="/login">
-              <Button type="button" className="btn btn-outline-primary">
-                Login
-              </Button>
-            </Nav.Link>
-            <Nav.Link href="/signup">
-              <Button type="button" className="btn btn-outline-info">
-                Register
-              </Button>
-            </Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
+    <div className='navbar'>
+      <div className="navbar_left">Streamzy</div>
+      <div className="navbar_right">
+          <div title="Profile" className="navbar_icons navbar_user">
+              <i class="navbar_icons far fa-user-circle"></i>
+          </div>
+          <div title="Go Live" className="navbar_icons navbar_user">
+              <i class="navbar_icons fas fa-satellite-dish"></i>
+          </div>
+          <div title="Notifications" className="navbar_icons navbar_notification">
+              <i class="far fa-bell"></i>
+              <div className="navbar_notificationCount">5</div>
+          </div>
+          <div title="Messages" className="navbar_icons navbar_message">
+              <i class="far fa-envelope"></i>
+              <div className="navbar_messageCount">5</div>
+          </div>
+      </div>
+  </div>
   );
 };
