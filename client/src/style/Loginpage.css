@@ -51,9 +51,9 @@ span {
 
 .butt {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
+	border: 1px solid #000000;
+	background-color: #000000;
+	color: tan;
     margin-top: 1rem;
 	font-size: 12px;
 	font-weight: bold;
@@ -166,9 +166,9 @@ button.ghost {
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: #000000;
+	background: -webkit-linear-gradient(to right, #000000, rgb(0, 0, 0));
+	background: linear-gradient(to right, #000000, rgb(0, 0, 0));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

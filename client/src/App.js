@@ -6,7 +6,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
 import About from './components/About';
-import Viewpage from './components/viewpage';
+import GoLive from './components/GoLive';
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
             <Route exact path="/about">
               <About/>
             </Route>
-            <Route exact path="/viewpage">
-              <Viewpage/>
+            <Route exact path="/GoLive">
+              <GoLive/>
             </Route>
             <Route exact path="/login">
               <div className="d-flex justify-content-center align-item-center mt-5">

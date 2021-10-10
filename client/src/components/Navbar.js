@@ -1,5 +1,4 @@
 import React from "react";
-import { Button ,Nav,Navbar,Container} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../style/Navbar.css";
 
@@ -39,7 +38,7 @@ export default function Navbarx () {
             </div>
           </Link>
 
-          <Link style={{textDecoration:"none"}}  to={'/viewpage'} >
+          <Link style={{textDecoration:"none"}}  to={'/GoLive'} >
             <div title="Go Live" className="navbar_icons navbar_user">
                 <i class="navbar_icons fas fa-satellite-dish"></i>
             </div>
