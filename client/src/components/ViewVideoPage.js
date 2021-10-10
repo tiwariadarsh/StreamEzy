@@ -1,7 +1,7 @@
 import React from "react";
 import {Button} from 'react-bootstrap';
 
-class View extends React.Component {
+class ViewVideoPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -26,4 +26,4 @@ class View extends React.Component {
   }
 }
 
-export default View;
+export default ViewVideoPage;

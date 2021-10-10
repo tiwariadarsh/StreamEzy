@@ -1,8 +1,8 @@
 import React ,{Component} from 'react'
 import VideoCard from "./VideoCard";
 import '../style/Home.css'
-import Thumbnail from './Thumbnail';
-import View from './View';
+import ViewVideoPage from './ViewVideoPage';
+
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/7b973cc4e4f04c9081ead788d635c300'));
 const contractAddress = '0x0447031221801f53dEbf8ba99A11d5e564D4d574';
@@ -76,7 +76,22 @@ class Home extends Component {
           stringex = "https://ipfs.io/ipfs/"
           thumbnailLink = stringex.concat(thumbnailHash); // construct link to thumbnail that users can navigate to
           videoLink = stringex.concat(videoHash); // construct link to video that users can navigate to
-          videos.push(<Thumbnail onRouteChange={this.onRouteChange} onVideoView={this.onVideoView} imglink={thumbnailLink} title={videoTitle} videoLink={videoLink}/> );
+          // videos.push(
+          //   <Thumbnail 
+          //     onRouteChange={this.onRouteChange} 
+          //     onVideoView={this.onVideoView} 
+          //     imglink={thumbnailLink} 
+          //     title={videoTitle} 
+          //     videoLink={videoLink}
+          //     /> );
+          videos.push(
+            <VideoCard 
+              onRouteChange={this.onRouteChange} 
+              onVideoView={this.onVideoView} 
+              imglink={thumbnailLink} 
+              title={videoTitle} 
+              videoLink={videoLink}
+            /> );
         }
         this.setState({
           Videos: videos
@@ -85,9 +100,11 @@ class Home extends Component {
     
       render() {
         return (
-          <div className="Home mt-4" style={{backgroundColor:"#f6f5f7" ,height:"100%",width:"100vw",minHeight:"100vh"}}>
-              { this.state.route !== 'view' ? <> {this.state.Videos} </> : <View onRouteChange={this.onRouteChange} videoLink={this.state.videoLink}/>
-          }
+          <div className="home">
+              { this.state.route !== 'view' ? 
+                <> {this.state.Videos} </> : 
+                <ViewVideoPage onRouteChange={this.onRouteChange} videoLink={this.state.videoLink}/>
+              }
             </div>
         );
       }
