@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button ,Nav,Navbar,Container} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../style/Navbar.css";
 
 export default function Navbarx () {
+  const [loggedin, setLoggedin] = useState(false)
+  
   return (
     <div className='navbar'>
       <div className="navbar_left">
@@ -14,13 +16,21 @@ export default function Navbarx () {
       <div className="navbar_right">
 
           <Link style={{textDecoration:"none"}} to={'/login'} >
-            <div title="Profile" className="navbar_icons navbar_user">
+          {
+            loggedin ? (
+              <div title="Profile" className="navbar_icons navbar_user">
                 <i class="navbar_icons far fa-user-circle"></i>
-            </div>
+              </div>
+            ) : (
+              <div title="Log In" className="navbar_icons navbar_login">
+                <i class="navbar_icons fas fa-sign-in-alt"></i>
+              </div>
+            )
+          }
           </Link>
 
           <Link style={{textDecoration:"none"}}  to={'/viewpage'} >
-            <div title="Go Live" className="navbar_icons navbar_user">
+            <div title="Go Live" className="navbar_icons navbar_viewpage">
                 <i class="navbar_icons fas fa-satellite-dish"></i>
             </div>
           </Link>
