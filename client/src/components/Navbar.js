@@ -10,7 +10,9 @@ export default function Navbarx () {
     <div className='navbar'>
       <div className="navbar_left">
         <Link style={{textDecoration:"none",color:'white'}}  to={'/'} >
-          Streamzy
+          <span>
+            Streamzy
+          </span>
         </Link>
       </div>
       <div className="navbar_right">
