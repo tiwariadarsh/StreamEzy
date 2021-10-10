@@ -9,32 +9,32 @@ export default function VideoCard(prop) {
             <HoverVideoPlayer
                 style={{
                     width:"100%",
-                    height:"70%"
+                    height:"100%"
                 }}
                 videoSrc={video}
                 sizingMode='container'
-                playbackRangeStart={5}
-                unloadVideoOnPaused
+                playbackRangeStart={Math.floor((Math.random() * 60) + 5)}
+                // unloadVideoOnPaused
                 restartOnPaused 
-                pausedOverlay={
-                    <img
-                    src={`https://randomfox.ca/images/${prop.number*2+Math.floor((Math.random() * 16) + 1)}.jpg`}
-                    alt=""
-                    style={{
-                        // Make the image expand to cover the video's dimensions
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                    }}
-                    />
-                }
+                // pausedOverlay={
+                //     <img
+                //     src={`https://randomfox.ca/images/${prop.number*2+Math.floor((Math.random() * 16) + 1)}.jpg`}
+                //     alt=""
+                //     style={{
+                //         // Make the image expand to cover the video's dimensions
+                //         width: "100%",
+                //         height: "100%",
+                //         objectFit: "cover",
+                //     }}
+                //     />
+                // }
                 loadingOverlay={
                     <div className="loading-overlay">
-                    <div className="loading-spinner" />
+                        <div className="loading-spinner"/>
                     </div>
                 }
             />
-            <div style={{height:"30%",backgroundColor:"red"}}>Hello1</div>
+            {/* <div style={{height:"30%",backgroundColor:"red"}}>Hello1</div> */}
         </div>
     )
 }
