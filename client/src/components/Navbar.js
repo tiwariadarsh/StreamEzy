@@ -1,17 +1,18 @@
 import React from "react";
-import { Button, Navbar, Nav, Container } from "react-bootstrap";
-
+import { Button ,Nav,Navbar,Container} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../style/Navbar.css";
 
 export default function Navbarx () {
-  return (
-    <Navbar bg="dark" variant="dark" style={{ position: "absolute", left:"0",right:"0" }}>
+  return (   
+    <Navbar className="navbar">
       <Container>
         <Navbar.Brand href="/">
-          <h4>StreamEzy</h4>
+          <h2>StreamEzy</h2>
         </Navbar.Brand>
 
         <Nav className="me-auto">
-          <Nav.Link href="/about" className="m-auto">
+          <Nav.Link href="/about" className="m-auto" style={{color:"grey"}}>
             About
           </Nav.Link>
             <Nav.Link href="/login">
@@ -19,8 +20,6 @@ export default function Navbarx () {
                 Login
               </Button>
             </Nav.Link>
-          
-         
             <Nav.Link href="/signup">
               <Button type="button" className="btn btn-outline-info">
                 Register

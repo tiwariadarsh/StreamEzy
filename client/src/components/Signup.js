@@ -3,10 +3,10 @@ import { Card, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export default function Signup() {
     return (
-        <div className="container-sm" style={{ width: "55vh" }}>
+        <div className="container-sm mt-5" style={{ width: "55vh" }}>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Create Account</h2>
+          <h2 className="text-center mb-4" style={{ color : "red"}}>Create Account</h2>
           <Form>
             <Form.Group>
               <Form.Label>User Name</Form.Label>

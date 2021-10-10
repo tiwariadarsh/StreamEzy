@@ -2,10 +2,10 @@ import React from 'react'
 import { Card, Form, Button } from "react-bootstrap";
 export default function Login() {
     return (
-        <div className="container-sm" style={{ width: "55vh" }}>
+        <div className="container-sm mt-5" style={{ width: "55vh" }}>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Sign In</h2>
+          <h2 className="text-center mb-4" style={{ color : "red"}}>Sign In</h2>
           <Form>
             <Form.Group>
               <Form.Label>E-Mail</Form.Label>
