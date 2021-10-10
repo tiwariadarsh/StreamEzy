@@ -8,7 +8,7 @@ export default function Navbarx () {
     <div className='navbar'>
       <div className="navbar_left">
         <Link style={{textDecoration:"none",color:'white'}}  to={'/'} >
-          Streamzy
+          StreamEzy
         </Link>
       </div>
       <div className="navbar_right">
@@ -19,11 +19,18 @@ export default function Navbarx () {
             </div>
           </Link>
 
-          <Link style={{textDecoration:"none"}}  to={'/viewpage'} >
-            <div title="Go Live" className="navbar_icons navbar_user">
-                <i class="navbar_icons fas fa-satellite-dish"></i>
+          <Link style={{textDecoration:"none"}} to={'/login'} >
+            <div title="Sign In" className="navbar_icons navbar_user">
+                <i class="navbar_icons fa fa-sign-in"></i>
             </div>
           </Link>
+
+          <Link style={{textDecoration:"none"}} to={'/signup'} >
+            <div title="Register" className="navbar_icons navbar_user">
+                <i class="navbar_icons far fa-registered"></i>
+            </div>
+          </Link>
+
 
           <Link  style={{textDecoration:"none"}} to={'/'} >
             <div title="Notifications" className="navbar_icons navbar_notification">
@@ -32,13 +39,15 @@ export default function Navbarx () {
             </div>
           </Link>
 
-          <Link  style={{textDecoration:"none"}} to={'/'} >
-            <div title="Messages" className="navbar_icons navbar_message">
-                <i class="far fa-envelope"></i>
-                <div className="navbar_messageCount">5</div>
+          <Link style={{textDecoration:"none"}}  to={'/viewpage'} >
+            <div title="Go Live" className="navbar_icons navbar_user">
+                <i class="navbar_icons fas fa-satellite-dish"></i>
             </div>
           </Link>
+
       </div>
   </div>
   );
 };
+
+
