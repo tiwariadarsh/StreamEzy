@@ -24,7 +24,7 @@ export default function Navbarx () {
             </div>
           </Link>
 
-          <Link style={{textDecoration:"none"}} to={'/login'} >
+          <Link style={{textDecoration:"none"}} to={'/signup'} >
             <div title="Register" className="navbar_icons navbar_user">
                 <i class="navbar_icons far fa-registered"></i>
             </div>
