@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import "../style/Navbar.css";
 
 export default function Navbarx () {
+<<<<<<< HEAD
   return (   
     <Navbar className="navbar">
+=======
+  return (
+    <Navbar bg="dark" variant="dark" style={{ width:"100vw"}}>
+>>>>>>> 71659ad83d283ecaf52eff0cda26f38b7540de3c
       <Container>
         <Navbar.Brand href="/">
           <h2>StreamEzy</h2>
