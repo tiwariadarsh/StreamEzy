@@ -15,29 +15,28 @@ function App() {
       <Router>
         <Navbar/>
         {window.innerWidth>650?<Sidebar/>:''}
-      <Switch>
-          <Route exact path="/">
-            <Home/>
-          </Route>
-          <Route exact path="/about">
-            <About/>
-          </Route>
-          <Route exact path="/viewpage">
-          <Viewpage/>
-          </Route>
-          <Route exact path="/login">
-            <div className="d-flex justify-content-center align-item-center mt-5">
-            <Login/>
-            </div>
-          </Route>
-          <Route exact path="/signup">
-            <div className="d-flex justify-content-center align-item-center mt-5">
-            <Signup/>
-            </div>
-          </Route>
-        </Switch>
+        <Switch>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+            <Route exact path="/about">
+              <About/>
+            </Route>
+            <Route exact path="/viewpage">
+              <Viewpage/>
+            </Route>
+            <Route exact path="/login">
+              <div className="d-flex justify-content-center align-item-center mt-5">
+              <Login/>
+              </div>
+            </Route>
+            <Route exact path="/signup">
+              <div className="d-flex justify-content-center align-item-center mt-5">
+              <Signup/>
+              </div>
+            </Route>
+          </Switch>
          </Router>
-     
     </div>
   );
 }
