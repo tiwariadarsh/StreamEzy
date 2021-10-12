@@ -20,13 +20,14 @@ export default function Navbarx () {
 
           <Link style={{textDecoration:"none"}} to={'/login'} >
             <div title="Sign In" className="navbar_icons navbar_user">
-                <i class="navbar_icons fa fa-sign-in"></i>
+                <i class="fas fa-sign-in-alt"></i>
+              
             </div>
           </Link>
 
           <Link style={{textDecoration:"none"}} to={'/signup'} >
             <div title="Register" className="navbar_icons navbar_user">
-                <i class="navbar_icons far fa-registered"></i>
+            <i class="navbar_icons fas fa-user-plus"></i>
             </div>
           </Link>
 
@@ -41,6 +42,11 @@ export default function Navbarx () {
           <Link style={{textDecoration:"none"}}  to={'/GoLive'} >
             <div title="Go Live" className="navbar_icons navbar_user">
                 <i class="navbar_icons fas fa-satellite-dish"></i>
+            </div>
+          </Link>
+          <Link style={{textDecoration:"none"}}  to={'/about'} >
+            <div title="About Us" className="navbar_icons navbar_user">
+                <i class="navbar_icons fas fa-question-circle"></i>
             </div>
           </Link>
 

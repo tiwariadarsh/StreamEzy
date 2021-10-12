@@ -1,11 +1,17 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+
 * {
 	box-sizing: border-box;
 }
 
 .login {
+	padding-left: 6cm;
+	padding-right: 6cm;
+	padding-top: 4cm;
+	padding-bottom: 4cm;
+
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
