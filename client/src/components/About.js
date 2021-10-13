@@ -28,7 +28,7 @@ export default function About() {
                 <card className="card-body">
                     <h3>Tiwari Adarsh</h3>
                     <span>Web developer</span>
-                    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+                    <p>MERN stack Developer.Expert in implementation of each step of the project. Eager to learn new technologies and methodologies.</p>
                 </card>
             </div>
         
