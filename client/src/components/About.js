@@ -4,6 +4,7 @@ import '../assets/bg3.jpg'
 
 export default function About() {
     return (
+        <div className="about">
       <div clasName="anime">
           {/* <img src="../assets/bg3.jpg" alt="background"/> */}
 	<div className="about-us">
@@ -65,7 +66,7 @@ export default function About() {
     </p>
 </div>
 </div>
-
+</div>
 
     )
 }

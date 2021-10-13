@@ -1,12 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower|Montserrat|Quicksand&display=swap);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
-body{
+.about{
     border-left-width: 800px;
-	/* background-image: url('../assets/bg3.jpg'); */
-
+	background:ghostwhite;
 	font-family: 'Montserrat', sans-serif;
-}
+	height: 100vh;
+} 
+
+
 .anime{
     
     min-width:50vh;
