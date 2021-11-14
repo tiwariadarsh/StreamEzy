@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import About from './components/About';
 import GoLive from './components/GoLive';
+import UserProfile from './components/UserProfile';
 
 
 function App() {
