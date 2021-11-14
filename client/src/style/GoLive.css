@@ -30,6 +30,7 @@
     text-align: center;
     box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
 }
+
 .centerDiv>div,.centerDiv>img,.centerDiv>input{
     margin: 1em;
 }
@@ -57,21 +58,6 @@
     background-color: tomato;
 }
 
-.streamCreateForm{
-    background-color: #fff;
-    box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
-    display: flex;
-    flex-direction: column;
-}
-
-.streamCreateForm input{
-    margin: 1em;
-}
-
-.streamCreateForm button{
-    margin: 1em;
-}
-
 .streamDetailsDisplay{
     background-color: #fff;
     box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
@@ -87,4 +73,13 @@
     font-size: inherit;
     cursor: pointer;
     font-weight: bold;
+}
+
+.instructions{
+    margin-left: 2em;
+    width: 50vh;
+    height: 70vh;
+    box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
+    padding: 1em;
+    overflow: auto;
 }

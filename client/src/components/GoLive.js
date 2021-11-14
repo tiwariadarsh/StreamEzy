@@ -81,7 +81,7 @@ export default function Viewpage() {
     switch(param) {
       case 'one':
         return (
-          <div id='w' className='centerDiv'>
+          <div className='centerDiv'>              
             <div className='title'>Welcome !</div>
             <img src={one} alt="" />
             <button onClick={()=>setdivActive('title')}>Next</button>
@@ -159,19 +159,44 @@ export default function Viewpage() {
           renderSwitch(divActive)
         )
         :(
-          <div className='streamDetailsDisplay'>
-            <div>Stream name - {streamData.name}</div>
-            <div>Stream streamkey - <span title='click to copy' onClick={e=>clickToCopy(e)}>{streamData.streamKey}</span></div>
-            <div>Stream playback url - <span title='click to copy' onClick={e=>clickToCopy(e)}>{`https://cdn.livepeer.com/hls/${streamData.playbackId}/index.m3u8`}</span></div>
-            <div>RTMP Ingest URL / Server - <span title='click to copy' onClick={e=>clickToCopy(e)}>{`rtmp://rtmp.livepeer.com/live`}</span></div>
-            <div>Stream tags - {streamTags}</div>
-            <div>Stream categories - {streamCategory}</div>
-            <div>Stream description - {streamDescription}</div>
-            <Link style={{textDecoration:"none",textAlign: "center"}} to={'/login'} >
-              <div>
-                <button>Go to Live Stream !</button>
-              </div>
-            </Link>
+          <div style={{display:'flex'}}>
+            <div className='streamDetailsDisplay'>
+              <div>Stream name - {streamData.name}</div>
+              <div>Stream streamkey - <span title='click to copy' onClick={e=>clickToCopy(e)}>{streamData.streamKey}</span></div>
+              <div>Stream playback url - <span title='click to copy' onClick={e=>clickToCopy(e)}>{`https://cdn.livepeer.com/hls/${streamData.playbackId}/index.m3u8`}</span></div>
+              <div>RTMP Ingest URL / Server - <span title='click to copy' onClick={e=>clickToCopy(e)}>{`rtmp://rtmp.livepeer.com/live`}</span></div>
+              <div>Stream tags - {streamTags}</div>
+              <div>Stream categories - {streamCategory}</div>
+              <div>Stream description - {streamDescription}</div>
+              <Link style={{textDecoration:"none",textAlign: "center"}} to={'/login'} >
+                <div>
+                  <button>Go to Live Stream !</button>
+                </div>
+              </Link>
+            </div>
+            <div className='instructions'>      
+              <h3>Go live using OBS :</h3>   
+              <br/>     
+              <p>OBS is free and open source software for live streaming. <span style={{cursor:'pointer',color:'tan',fontSize:'inherit',textDecoration:'underline'}} href='https://obsproject.com/download'>Download and install OBS.</span></p>
+              <p>Before streaming, we need to configure OBS. Click on Settings in the lower right corner.</p>
+              <p>First, let’s set the keyframe interval.</p>
+              <ol>
+                <li>In the Settings sidebar menu, select Output.</li>
+                <li>At the top, select Advanced from the Output Mode dropdown.</li>
+                <li>In the Keyframe Interval row, input 2 in the text field.</li>
+              </ol>
+              <p>Next, let’s configure OBS to point to Livepeer.com’s RTMP ingest data centers.</p>
+              <ol>
+                <li>In the Setting sidebar menu, select Stream.</li>
+                <li>At the top, select Custom from the Service dropdown menu.</li>
+                <li>Input <span style={{cursor:'pointer',color:'tan',fontSize:'inherit'}} title='click to copy' onClick={e=>clickToCopy(e)}>rtmp://rtmp.livepeer.com/live</span> in the Server text field.</li>
+                <li>Navigate to the stream detail page, click the “Reveal stream key” button, and copy the stream key.</li>
+                <li>Navigate back to OBS, and paste your stream key into the Stream Key text field.</li>
+                <li>Confirm the Use Authentication checkbox is unchecked.</li>
+                <li>Click OK in the lower right corner to save your updated server and keyframe interval settings.</li>
+              </ol>
+              <p>When you are ready to start your live stream, click Start Streaming in the lower right corner of OBS.</p>
+            </div>
           </div>
         )
       }
