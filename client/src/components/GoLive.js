@@ -177,7 +177,7 @@ export default function Viewpage() {
             <div className='instructions'>      
               <h3>Go live using OBS :</h3>   
               <br/>     
-              <p>OBS is free and open source software for live streaming. <span style={{cursor:'pointer',color:'tan',fontSize:'inherit',textDecoration:'underline'}} href='https://obsproject.com/download'>Download and install OBS.</span></p>
+              <p>OBS is free and open source software for live streaming. <a style={{cursor:'pointer',color:'tan',fontSize:'inherit',textDecoration:'underline'}} href='https://obsproject.com/download' target='_blank'>Download and install OBS.</a></p>
               <p>Before streaming, we need to configure OBS. Click on Settings in the lower right corner.</p>
               <p>First, let’s set the keyframe interval.</p>
               <ol>
