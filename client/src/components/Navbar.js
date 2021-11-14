@@ -12,7 +12,7 @@ export default function Navbarx () {
       </div>
       <div className="navbar_right">
 
-          <Link style={{textDecoration:"none"}} to={'/login'} >
+          <Link style={{textDecoration:"none"}} to={'/profile'} >
             <div title="Profile" className="navbar_icons navbar_user">
                 <i class="navbar_icons far fa-user-circle"></i>
             </div>

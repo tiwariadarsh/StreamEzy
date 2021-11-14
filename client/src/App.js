@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import About from './components/About';
 import GoLive from './components/GoLive';
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
               <div className="d-flex justify-content-center align-item-center mt-5">
               <Signup/>
               </div>
+            </Route>
+            <Route exact path = '/profile'>
+              <UserProfile/>
             </Route>
           </Switch>
          </Router>
