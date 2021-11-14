@@ -41,6 +41,9 @@ function App() {
               <div className="d-flex justify-content-center align-item-center mt-5">
               </div>
             </Route>
+            <Route exact path = '/profile'>
+              <UserProfile/>
+            </Route>
           </Switch>
          </Router>
     </div>
