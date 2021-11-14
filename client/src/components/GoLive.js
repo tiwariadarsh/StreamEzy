@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import "../style/GoLive.css";
 import { Link } from "react-router-dom";
 import axios from 'axios';
- 
-import ReactPlayer from 'react-player';
+import one from '../assets/1.svg' 
+import detail from '../assets/detail.svg' 
+import category from '../assets/category.svg' 
+import tag from '../assets/tags.svg' 
+import title from '../assets/title.svg' 
 
-// import { createStream } from '../apis/createStream';
-const streamurl="https://cdn.livepeer.com/hls/b2f8ti3jxfg27vjf/index.m3u8"
-
-//https://cdn.livepeer.com/hls/{playBackStream}/index.m3u8
+// import ReactPlayer from 'react-player';
 
 export default function Viewpage() {
 
@@ -19,6 +19,7 @@ export default function Viewpage() {
   const [streamDescription, setStreamDescription] = useState('')
   const [streamData, setStreamData] = useState({})
   const [streamCreated, setstreamCreated] = useState(false)
+  const [divActive, setdivActive] = useState('one')
 
   const createStream = (apiKey,stream_name) => {
     // POST request using axios with set headers
@@ -61,15 +62,78 @@ export default function Viewpage() {
         .catch(error=>console.log(error.message))
     }
 
-    const clickToCopy = (e) => {
-      var r = document.createRange();
-      r.selectNode(e.target);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(r);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
+  const clickToCopy = (e) => {
+    var r = document.createRange();
+    r.selectNode(e.target);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(r);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
   }
-    console.log(streamCreated);
+  
+  const renderSwitch = (param) => {
+    switch(param) {
+      case 'one':
+        return (
+          <div id='w' className='centerDiv'>
+            <div className='title'>Welcome !</div>
+            <img src={one} alt="" />
+            <button onClick={()=>setdivActive('title')}>Next</button>
+          </div>
+        );
+      case 'title':
+        return (
+          <div className='centerDiv'>
+            <div className='title'>Title !</div>
+            <img src={title} alt="" />
+            <input value={streamName} type='text' name='streamName' onInput={e=>setStreamName(e.target.value)} placeholder='Enter Stream Title'/>
+            <div classname='buttonDiv'>
+              <button onClick={()=>setdivActive('one')}>Back</button>
+              <button onClick={()=>{setdivActive('tag')}}>Next</button>
+            </div>
+          </div>
+        ); 
+      case 'tag':
+        return (
+          <div className='centerDiv'>
+            <div className='title'>Tag !</div>
+            <img src={tag} alt="" />
+            <input value={streamTags} type='text' name='tags' onInput={e=>setStreamTags(e.target.value)} placeholder='Enter Stream Tags'/>
+            <div classname='buttonDiv'>
+              <button onClick={()=>setdivActive('title')}>Back</button>
+              <button onClick={()=>setdivActive('category')}>Next</button>
+            </div>
+          </div>
+        );
+      case 'category':
+        return (
+          <div className='centerDiv'>
+            <div className='title'>Category !</div>
+            <img src={category} alt="" />
+            <input value={streamCategory} type='text' name='categories' onInput={e=>setStreamCategory(e.target.value)} placeholder='Enter Stream Category'/>
+            <div classname='buttonDiv'>
+              <button onClick={()=>setdivActive('tag')}>Back</button>
+              <button onClick={()=>setdivActive('description')}>Next</button>
+            </div>
+          </div>
+        ); 
+      case 'description':
+        return (
+          <div className='centerDiv'>
+            <div className='title'>Description !</div>
+            <img src={detail} alt="" />
+            <input value={streamDescription} type='text' name='description' onInput={e=>setStreamDescription(e.target.value)} placeholder='Enter Stream Description'/>
+            <div classname='buttonDiv'>
+              <button onClick={()=>setdivActive('category')}>Back</button>
+              <button onClick={()=>{createStream(apiKey,streamName);console.log('click')}}>Create Stream</button>
+            </div>
+          </div>
+        );
+      default:
+        return 'foo';
+    }
+  }
+
   return (  
     <div className="GoLive">
         {/* <ReactPlayer
@@ -80,15 +144,10 @@ export default function Viewpage() {
           url={`https://cdn.livepeer.com/hls/${streamData.playbackId}/index.m3u8`}
           controls
         /> */}
+      {/* {renderSwitch(divActive)} */}
       {streamCreated===false
         ?(
-          <div className='streamCreateForm'>
-            <input type='text' name='streamName' onInput={e=>setStreamName(e.target.value)} placeholder='Enter Stream Title'/>
-            <input type='text' name='tags' onInput={e=>setStreamTags(e.target.value)} placeholder='Enter Stream Tags'/>
-            <input type='text' name='categories' onInput={e=>setStreamCategory(e.target.value)} placeholder='Enter Stream Category'/>
-            <input type='text' name='description' onInput={e=>setStreamDescription(e.target.value)} placeholder='Enter Stream Description'/>
-            <button onClick={()=>{createStream(apiKey,streamName);console.log('click')}}>Create Stream</button>
-          </div>
+          renderSwitch(divActive)
         )
         :(
           <div className='streamDetailsDisplay'>

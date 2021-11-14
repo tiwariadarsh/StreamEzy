@@ -8,6 +8,39 @@
     background-color: rgba(0, 0, 0, 0.014);
 }
 
+.centerDiv{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
+}
+.centerDiv>div,.centerDiv>img,.centerDiv>input{
+    margin: 1em;
+}
+
+.centerDiv img{
+    height: 30vh;
+    width: 50vh;
+}
+
+.GoLive button{
+    margin: 1em;
+    padding: 0.5em;
+    border: 1px rgba(0, 0, 0, 0.445) solid;
+    background-color: white;
+}
+
+.GoLive input{
+    padding: 0.5em;
+    outline: rgba(0, 0, 0, 0.5);
+    border: 1px rgba(0, 0, 0, 0.445) solid;
+}
+
+.GoLive button:hover{
+    color: white;
+    background-color: tomato;
+}
+
 .streamCreateForm{
     background-color: #fff;
     box-shadow: 0 6px 16px 0 rgb(0 0 0 / 20%);
