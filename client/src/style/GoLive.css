@@ -8,6 +8,22 @@
     background-color: rgba(0, 0, 0, 0.014);
 }
 
+.loader{
+    display: none;
+    position: absolute;
+    top: 4.4rem;
+    left: 67px;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background: #00000047;
+}
+
+.loader img{
+    height: 4em;
+}
+
 .centerDiv{
     display: flex;
     flex-direction: column;

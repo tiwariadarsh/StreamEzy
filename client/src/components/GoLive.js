@@ -7,6 +7,7 @@ import detail from '../assets/detail.svg'
 import category from '../assets/category.svg' 
 import tag from '../assets/tags.svg' 
 import title from '../assets/title.svg' 
+import loader from '../assets/loader.gif' 
 
 // import ReactPlayer from 'react-player';
 
@@ -22,6 +23,7 @@ export default function Viewpage() {
   const [divActive, setdivActive] = useState('one')
 
   const createStream = (apiKey,stream_name) => {
+    document.querySelector('.loader').style.display = 'flex'
     // POST request using axios with set headers
     const params = JSON.stringify({
         "name": stream_name,
@@ -55,11 +57,15 @@ export default function Viewpage() {
     };
     axios.post('https://livepeer.com/api/stream', params, { headers })
         .then(response => {
+          document.querySelector('.loader').style.display = 'none'
           console.log(response.data)
           setStreamData(response.data)
           setstreamCreated(true)
         })
-        .catch(error=>console.log(error.message))
+        .catch(error=>{
+          document.querySelector('.loader').style.display = 'none'
+          console.log(error.message)
+        })
     }
 
   const clickToCopy = (e) => {
@@ -145,6 +151,9 @@ export default function Viewpage() {
           controls
         /> */}
       {/* {renderSwitch(divActive)} */}
+      <div className='loader'>
+        <img src={loader}/>
+      </div>
       {streamCreated===false
         ?(
           renderSwitch(divActive)
