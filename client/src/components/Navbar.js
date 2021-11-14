@@ -12,6 +12,12 @@ export default function Navbarx () {
       </div>
       <div className="navbar_right">
 
+          <Link style={{textDecoration:"none"}}  to={'/about'} >
+            <div title="About Us" className="navbar_icons navbar_user">
+                <i class="navbar_icons fas fa-question-circle"></i>
+            </div>
+          </Link>
+
           <Link style={{textDecoration:"none"}} to={'/login'} >
             <div title="Profile" className="navbar_icons navbar_user">
                 <i class="navbar_icons far fa-user-circle"></i>
@@ -44,9 +50,10 @@ export default function Navbarx () {
                 <i class="navbar_icons fas fa-satellite-dish"></i>
             </div>
           </Link>
-          <Link style={{textDecoration:"none"}}  to={'/about'} >
-            <div title="About Us" className="navbar_icons navbar_user">
-                <i class="navbar_icons fas fa-question-circle"></i>
+
+          <Link style={{textDecoration:"none"}} to={'/upload'} >
+            <div title="Upload Video" className="navbar_icons navbar_user">
+                <i class="fas fa-video"></i>
             </div>
           </Link>
 
