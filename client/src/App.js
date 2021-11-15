@@ -16,9 +16,9 @@ function App() {
 
       <Router>
         <Navbar/>
-        {window.innerWidth>650?<Sidebar/>:''}
         <Switch>
             <Route exact path="/">
+            {window.innerWidth>650?<Sidebar/>:''}
               <Home/>
             </Route>
             <Route exact path="/About">
