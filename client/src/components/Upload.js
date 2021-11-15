@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import "../style/Upload.css";
 export default function Upload() {
   return (
+      <div className="upload">
     <div className="section-title">
       <h1
         style={{
@@ -19,7 +20,7 @@ export default function Upload() {
       <div
         style={{
           paddingLeft: "10%",
-          backgroundColor: "#fdcc0d",
+          backgroundColor: "goldenrod",
           borderRadius: "20px",
           paddingTop: "60px",
           paddingBottom: "40px",
@@ -90,6 +91,7 @@ export default function Upload() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
