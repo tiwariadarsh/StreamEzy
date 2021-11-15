@@ -8,6 +8,7 @@ import Home from './components/Home';
 import About from './components/About';
 import GoLive from './components/GoLive';
 import UserProfile from './components/UserProfile';
+import Upload from './components/Upload';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             </Route>
             <Route exact path="/upload">
               <div className="d-flex justify-content-center align-item-center mt-5">
+                <Upload />
               </div>
             </Route>
             <Route exact path = '/profile'>
