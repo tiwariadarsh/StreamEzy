@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
- 
 import ReactPlayer from 'react-player';
 import { createStream } from '../apis/createStream';
+import "../style/GoLive.css";
 const streamurl="https://cdn.livepeer.com/hls/3e9clqo7i819cl9x/index.m3u8"
 
 //https://cdn.livepeer.com/hls/{playBackStream}/index.m3u8
@@ -21,8 +21,9 @@ export default function Viewpage() {
         heigh="100%"
         />
       </header>
-      <button onClick={()=>createStream(apiKey,streamName)}>Create Stream</button>
-
+     
+      <button className="cool" onClick={()=>createStream(apiKey,streamName)}>Create Stream</button>
+      
   </div>
   );
 }
