@@ -15,11 +15,11 @@ function App() {
   return (
     <div className="App">
 
+            {window.innerWidth>650?<Sidebar/>:''}
       <Router>
         <Navbar/>
         <Switch>
             <Route exact path="/">
-            {window.innerWidth>650?<Sidebar/>:''}
               <Home/>
             </Route>
             <Route exact path="/About">

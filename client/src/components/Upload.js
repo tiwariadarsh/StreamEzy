@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import "../style/Upload.css";
+
 export default function Upload() {
   return (
       <div className="upload">
