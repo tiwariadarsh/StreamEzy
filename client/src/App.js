@@ -7,6 +7,9 @@ import Login from './components/Login';
 import Home from './components/Home';
 import About from './components/About';
 import GoLive from './components/GoLive';
+import UserProfile from './components/UserProfile';
+import Upload from './components/Upload';
+
 
 function App() {
   return (
@@ -14,9 +17,9 @@ function App() {
 
       <Router>
         <Navbar/>
-        {window.innerWidth>650?<Sidebar/>:''}
         <Switch>
             <Route exact path="/">
+            {window.innerWidth>650?<Sidebar/>:''}
               <Home/>
             </Route>
             <Route exact path="/About">
@@ -34,6 +37,14 @@ function App() {
               <div className="d-flex justify-content-center align-item-center mt-5">
               <Signup/>
               </div>
+            </Route>
+            <Route exact path="/upload">
+              <div className="d-flex justify-content-center align-item-center mt-5">
+                <Upload />
+              </div>
+            </Route>
+            <Route exact path = '/profile'>
+              <UserProfile/>
             </Route>
           </Switch>
          </Router>

@@ -12,41 +12,48 @@ export default function Navbarx () {
       </div>
       <div className="navbar_right">
 
-          <Link style={{textDecoration:"none"}} to={'/login'} >
+          <Link style={{textDecoration:"none"}}  to={'/about'} >
+            <div title="About Us" className="navbar_icons navbar_user">
+                <i class="navbar_icons fas fa-question-circle"></i>
+            </div>
+          </Link>
+
+          <Link style={{textDecoration:"none"}} to={'/profile'} >
             <div title="Profile" className="navbar_icons navbar_user">
-                <i class="navbar_icons far fa-user-circle"></i>
+                <i className="navbar_icons far fa-user-circle"></i>
             </div>
           </Link>
 
           <Link style={{textDecoration:"none"}} to={'/login'} >
             <div title="Sign In" className="navbar_icons navbar_user">
-                <i class="fas fa-sign-in-alt"></i>
+                <i className="fas fa-sign-in-alt"></i>
               
             </div>
           </Link>
 
           <Link style={{textDecoration:"none"}} to={'/signup'} >
             <div title="Register" className="navbar_icons navbar_user">
-            <i class="navbar_icons fas fa-user-plus"></i>
+            <i className="navbar_icons fas fa-user-plus"></i>
             </div>
           </Link>
 
 
           <Link  style={{textDecoration:"none"}} to={'/'} >
             <div title="Notifications" className="navbar_icons navbar_notification">
-                <i class="far fa-bell"></i>
+                <i className="far fa-bell"></i>
                 <div className="navbar_notificationCount">5</div>
             </div>
           </Link>
 
           <Link style={{textDecoration:"none"}}  to={'/GoLive'} >
             <div title="Go Live" className="navbar_icons navbar_user">
-                <i class="navbar_icons fas fa-satellite-dish"></i>
+                <i className="navbar_icons fas fa-satellite-dish"></i>
             </div>
           </Link>
-          <Link style={{textDecoration:"none"}}  to={'/about'} >
-            <div title="About Us" className="navbar_icons navbar_user">
-                <i class="navbar_icons fas fa-question-circle"></i>
+
+          <Link style={{textDecoration:"none"}} to={'/upload'} >
+            <div title="Upload Video" className="navbar_icons navbar_user">
+                <i class="fas fa-video"></i>
             </div>
           </Link>
 

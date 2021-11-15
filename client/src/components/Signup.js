@@ -4,6 +4,7 @@ import "../style/Loginpage.css";
 
 export default function Signup() {
     return (
+      <div className="login-body">
       <div className="login">
       <div class="container" id="container">
 <div class="form-container sign-in-container">
@@ -30,6 +31,7 @@ export default function Signup() {
       <Link to="/login"> <button className="ghost butt" id="signUp">Sign In</button> </Link>
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>

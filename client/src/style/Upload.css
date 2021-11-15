@@ -1,0 +1,38 @@
+.navigation-bar-2 {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 40px;
+    padding-right: 20px;
+    margin-top: 5rem;
+}
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);   
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.upload-submit-button{
+    align-items: center;
+    width: 25%;
+    padding: 0.5em;
+    border: 1px rgba(0, 0, 0, 0.445) solid;
+    background-color:white;
+}
+
+.upload-submit-button:hover{
+    color: white;
+    background-color: gray;
+}
