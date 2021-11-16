@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "../style/Upload.css";
 
 export default function Upload() {
