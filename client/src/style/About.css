@@ -85,28 +85,28 @@
 } */
 .card-img1{
 	width: 100%;
-	height: 12rem;
+	height: 14rem;
 	background-image: url('../assets/01.jpg');
 	background-size: cover;
 	background-position: center center;
 }
 .card-img2{
 	width: 100%;
-	height: 12rem;
+	height: 14rem;
 	background-image: url('../assets/02.jpg');
 	background-size: cover;
 	background-position: center center;
 }
 .card-img3{
 	width: 100%;
-	height: 12rem;
+	height: 14rem;
 	background-image: url('../assets/03.jpg');
 	background-size: cover;
 	background-position: center center;
 }
 .card-img4{
 	width: 100%;
-	height: 12rem;
+	height: 14rem;
 	background-image: url('../assets/04.jpg');
 	background-size: cover;
 	background-position: center center;
