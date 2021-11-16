@@ -2,7 +2,7 @@ import React ,{Component} from 'react'
 import VideoCard from "./VideoCard";
 import '../style/Home.css'
 import ViewVideoPage from './ViewVideoPage';
-
+import loader from '../assets/loader.gif' 
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/7b973cc4e4f04c9081ead788d635c300'));
 const contractAddress = '0x0447031221801f53dEbf8ba99A11d5e564D4d574';
@@ -41,7 +41,7 @@ class Home extends Component {
         super();
         this.state = {
           route: 'home', // handles and captures routing state. Begin at sign in form
-          videoLink: '' // used to pass IPFS video link to 'View' component
+          videoLink: '', // used to pass IPFS video link to 'View' component
         }
       }
       onRouteChange = (route) => {
@@ -99,10 +99,11 @@ class Home extends Component {
       }
     
       render() {
+       
         return (
           <div className="home">
               { this.state.route !== 'view' ? 
-                <> {this.state.Videos} </> : 
+                <> {this.state.Videos} </> :
                 <ViewVideoPage onRouteChange={this.onRouteChange} videoLink={this.state.videoLink}/>
               }
             </div>
