@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "../style/Loginpage.css";
+
 export default function Login() {
     return (
 		<div className="login-body">

@@ -1,6 +1,77 @@
-import React, { Fragment } from "react";
+import React, { useState } from 'react';
 import "../style/Upload.css";
-export default function Upload() {
+import { MDBBtn } from "mdbreact";
+import { create } from 'ipfs-http-client';
+
+const client = create('https://ipfs.infura.io:5001/api/v0')
+//var Buffer = require('buffer/').Buffer 
+
+
+
+
+export default function Upload()
+{
+  
+  // const [fileUrl, updateFileUrl] = useState(``)
+  // const [Buffer, updateBuffer] = useState(null) 
+  
+  // async function onChange(e) {
+  //   const file = e.target.files[0]
+  //   try {
+  //     const added = await client.add(file)
+  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`
+  //     updateFileUrl(url)
+      
+  //   } catch (error) {
+  //     console.log('Error uploading file: ', error)
+  //   }  
+  const [fileUrl, updateFileUrl] = useState(``)
+  const [buffer, updateBuffer] = useState(null) 
+  async function onChange(e) {
+    const file = e.target.files[0]
+    try {
+      const added = await client.add(file)
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      updateFileUrl(url)
+    } catch (error) {
+      console.log('Error uploading file: ', error)
+    }  
+  }
+
+  
+  //Get video
+  const captureFile = event => {
+    event.preventDefault()
+    const file = event.target.files[0]
+    console.log(event.target , file)
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () =>{
+      updateBuffer(reader.result)
+      console.log(event ,buffer ,reader)
+     // updateBuffer(Buffer(reader.results))
+      // console.log('buffer', this.state.buffer);
+    }
+  }
+
+  //Upload video
+  
+  const uploadVideo = title => {
+
+    console.log('Submitting to ipfs...');
+    client.add(buffer).then((result) => {console.log(result)}).catch((error) => {alert(error.msg)})
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   return (
     <div className="section-title">
       <h1
@@ -58,6 +129,8 @@ export default function Upload() {
               fontSize: "15px",
             }}
             type="file"
+            onChange={(event) => captureFile(event)}
+
           />
         </form>
         <form className="form-inline mt-4 mb-4">
@@ -84,7 +157,7 @@ export default function Upload() {
           </select>
         </form>
         <div>
-          <button id="myBtn" className="upload-submit-button">
+          <button id="myBtn" className="upload-submit-button" onClick={uploadVideo}>
             {" "}
             Submit{" "}
           </button>
@@ -92,4 +165,6 @@ export default function Upload() {
       </div>
     </div>
   );
+
 }
+

@@ -141,19 +141,6 @@ export default function Viewpage() {
   }
 
   return (  
-<<<<<<< HEAD
-    <div className="App">
-      <header className="App-header">
-        <ReactPlayer
-        url={streamurl}
-        width="50%"
-        heigh="100%"
-        />
-      </header>
-     
-      <button className="cool" onClick={()=>createStream(apiKey,streamName)}>Create Stream</button>
-      
-=======
     <div className="GoLive">
         {/* <ReactPlayer
           url={streamurl}
@@ -214,7 +201,6 @@ export default function Viewpage() {
         )
       }
 
->>>>>>> 8b6ab42c1ed82b9b80617fffc5fb14ea166bcc9f
   </div>
   );
 }
