@@ -5,6 +5,12 @@ import sampleVideo from '../assets/sample2.mp4'
 {/* <ReactPlayer url='' controls/> */}
 
 function LiveStreamCreator() {
+    function urlify(text) {
+        var urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.replace(urlRegex, function(url) {
+          return '<a href="' + url + '">' + url + '</a>';
+        })
+      }
     return (
         <div className='liveStreamCreator'>
             <div className='liveStreamCreator_left'>
