@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "../style/Upload.css";
-import { MDBBtn } from "mdbreact";
+//import { MDBBtn } from "mdbreact";
 import { create } from 'ipfs-http-client';
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
@@ -72,7 +72,11 @@ export default function Upload()
   
   
   
+
+
+export default function Upload() {
   return (
+      <div className="upload">
     <div className="section-title">
       <h1
         style={{
@@ -90,7 +94,7 @@ export default function Upload()
       <div
         style={{
           paddingLeft: "10%",
-          backgroundColor: "#fdcc0d",
+          backgroundColor: "goldenrod",
           borderRadius: "20px",
           paddingTop: "60px",
           paddingBottom: "40px",
@@ -164,7 +168,9 @@ export default function Upload()
         </div>
       </div>
     </div>
+    </div>
   );
 
+}
 }
 

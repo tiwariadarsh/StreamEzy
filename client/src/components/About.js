@@ -61,8 +61,8 @@ export default function About() {
     <i className="fa fa-facebook "></i>
         </div>
 </div>
-<div>
-    <p>Made with 💖 in India
+<div style={{marginLeft:"44%"}}>
+<p>Made with 💖 in India
     </p>
 </div>
 </div>

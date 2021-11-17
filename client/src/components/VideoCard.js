@@ -1,7 +1,7 @@
 import React from 'react'
 import '../style/VideoCard.css'
 import HoverVideoPlayer from 'react-hover-video-player';
-import video from '../assets/sample.mp4'
+//import video from '../assets/sample.mp4'
 
 export default function VideoCard(prop) {
     return (

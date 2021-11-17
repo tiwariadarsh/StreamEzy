@@ -168,7 +168,7 @@ export default function Viewpage() {
               <div>Stream tags - {streamTags}</div>
               <div>Stream categories - {streamCategory}</div>
               <div>Stream description - {streamDescription}</div>
-              <Link style={{textDecoration:"none",textAlign: "center"}} to={'/login'} >
+              <Link style={{textDecoration:"none",textAlign: "center"}} to={'/stream-creator'} >
                 <div>
                   <button>Go to Live Stream !</button>
                 </div>
