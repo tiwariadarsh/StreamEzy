@@ -74,7 +74,7 @@ export default function Upload()
   
 
 
-export default function Upload() {
+
   return (
       <div className="upload">
     <div className="section-title">
@@ -172,5 +172,5 @@ export default function Upload() {
   );
 
 }
-}
+
 
