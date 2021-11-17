@@ -146,6 +146,7 @@ export default function Upload()
               fontSize: "15px",
             }}
             type="file"
+            onChange={(event) => captureFile(event)}
           />
         </form>
         <form className="form-inline" style={{ paddingBottom: "40px" }}>
