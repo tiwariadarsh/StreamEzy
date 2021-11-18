@@ -11,6 +11,7 @@ import UserProfile from './components/UserProfile';
 import Upload from './components/Upload';
 import LiveStreamCreator from './components/LiveStreamCreator';
 import LiveStreamViewer from './components/LiveStreamViewer';
+import Test from './components/Test';
 
 
 function App() {
@@ -51,8 +52,8 @@ function App() {
             <Route exact path = '/stream-creator'>
               <LiveStreamCreator/>
             </Route>
-            <Route exact path = '/stream-viewer'>
-              <LiveStreamViewer/>
+            <Route exact path = '/test'>
+              <Test/>
             </Route>
           </Switch>
          </Router>
