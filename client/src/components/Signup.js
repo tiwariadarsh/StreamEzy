@@ -42,9 +42,11 @@ export default function Signup() {
       password:`${password}`,
       uid:`${userId}`
     }
-    await ipfs.files.write(`/${email}/user.txt`, JSON.stringify(user), { create: true })
+    await ipfs.files.write(`/${email}/user.txt`, JSON.stringify(user), { create: true ,})
+    var userdir2 = await ipfs.files.stat(`/${email}/user.txt`)
+    console.log(userdir2.cid.toString());
     window.localStorage.setItem('user',JSON.stringify(user))
-    window.location.href = './'
+    //window.location.href = './'
     const chunks = []
     var result;
     for await (const chunk of ipfs.files.read(`/${email}/user.txt`)) {
@@ -52,7 +54,28 @@ export default function Signup() {
       result = enc.decode(chunk)
     }
     console.log(JSON.parse(result));
-  }
+  
+
+
+
+  //new
+ // const node = await IPFS.create()
+
+//const data = 'Hello, <adarsh>'
+
+// add your data to to IPFS - this can be a string, a Buffer,
+// a stream of Buffers, etc
+//const results = await node.add(data)
+//console.log(results)
+// we loop over the results because 'add' supports multiple 
+// additions, but we only added one entry here so we only see
+// one log line in the output
+//for await (const { cid } of results) {
+  // CID (Content IDentifier) uniquely addresses the data
+  // and can be used to get it again.
+ // console.log(cid.toString())
+//}
+ }
 
     return (
       <div className="login-body">
