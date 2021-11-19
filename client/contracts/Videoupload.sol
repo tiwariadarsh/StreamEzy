@@ -1,4 +1,6 @@
-pragma solidity ^0.6.6;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.5.16;
+//github se copy(jisse apan ne video liye hai)
 
 contract playlist {
 
@@ -17,7 +19,7 @@ contract playlist {
     function addVideo(string memory _title, string memory _thumbnailHash, string memory _videoHash) public returns(bool) {
         if (isExisting(_thumbnailHash, _videoHash) == false) {
             uint _id = videoArray.length;
-            uint _date = now;
+            uint _date = block.timestamp;
             videoArray.push(video({
                 id: _id,
                 date: _date,
