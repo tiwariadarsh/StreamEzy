@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import "../style/Loginpage.css";
-import * as IPFS from 'ipfs-core'
+// import * as IPFS from 'ipfs-core'
 import { v4 as uuidv4 } from 'uuid';
+import * as IPFS from 'ipfs'
+import OrbitDB from 'orbit-db'
+import { signinDb } from '../utils';
+
+var orbitdb;
+var ipfs;
 
 export default function Signup() {
   const [name, setname] = useState('')
@@ -10,19 +16,14 @@ export default function Signup() {
   const [password, setpassword] = useState('')
   const [confirmPassword, setconfirmPassword] = useState('')
   var ipfs;
-
-  // const load = async () => {
-  //    ipfs = await IPFS.create()
-  // }
-  // useEffect(() => {
-  //   load()
-  // }, [])
-
-
+  
   const register = async (event) => {
     event.preventDefault()
-    ipfs = await IPFS.create()
-    console.log(name,email,password);
+    const ipfsOptions = { repo : './ipfs', }
+    ipfs = await IPFS.create(ipfsOptions)
+    // Create OrbitDB instance
+    orbitdb = await OrbitDB.createInstance(ipfs)
+
     if(password!==confirmPassword || name === "" || email === "" || password === "" || confirmPassword === ""){
       window.alert('Error!')
       setname('')
@@ -31,27 +32,23 @@ export default function Signup() {
       setconfirmPassword('')
       return;
     }
-    var userId = uuidv4();
-    console.log(userId);
-    await ipfs.files.mkdir(`/${email}`)
-    const userDir =  await ipfs.files.stat(`/`)
-    console.log(userDir.cid.toString());
-    var user = {
-      name:`${name}`,
-      email:`${email}`,
-      password:`${password}`,
-      uid:`${userId}`
+    const db = await orbitdb.docs(signinDb)
+		await db.load()
+    const value = db.get(email)
+    if(value[0]){
+      window.location.reload();
+    }else{
+      db.put({_id:email, name: name, password:password,email:email }, { pin: true })
+      .then(res=>{
+        console.log(res)
+        const value = db.get(email)
+        window.localStorage.setItem('user',JSON.stringify(JSON.stringify(value[0])))
+        window.location.href = './'
+      })
+      .catch(err=>{
+        window.location.reload();
+      })
     }
-    await ipfs.files.write(`/${email}/user.txt`, JSON.stringify(user), { create: true })
-    window.localStorage.setItem('user',JSON.stringify(user))
-    window.location.href = './'
-    const chunks = []
-    var result;
-    for await (const chunk of ipfs.files.read(`/${email}/user.txt`)) {
-      var enc = new TextDecoder("utf-8");
-      result = enc.decode(chunk)
-    }
-    console.log(JSON.parse(result));
   }
 
     return (
