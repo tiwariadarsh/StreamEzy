@@ -1,61 +1,61 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { div } from "react-router-dom";
 import "../style/Navbar.css";
 
-export default function Navbarx () {
+export default function Navbarx ({onRouteChange}) {
   return (
     <div className='navbar'>
       <div className="navbar_left">
-        <Link style={{textDecoration:"none",color:'white'}}  to={'/'} >
+        <div style={{textDecoration:"none",color:'white'}}  onClick={()=>onRouteChange('/')} >
           StreamEzy
-        </Link>
+        </div>
       </div>
       <div className="navbar_right">
 
-          <Link style={{textDecoration:"none"}}  to={'/about'} >
+          <div style={{textDecoration:"none"}} onClick={()=>onRouteChange('/About')} >
             <div title="About Us" className="navbar_icons navbar_user">
                 <i class="navbar_icons fas fa-question-circle"></i>
             </div>
-          </Link>
+          </div>
 
-          <Link style={{textDecoration:"none"}} to={'/profile'} >
+          <div style={{textDecoration:"none"}} onClick={()=>onRouteChange('/profile')} >
             <div title="Profile" className="navbar_icons navbar_user">
                 <i className="navbar_icons far fa-user-circle"></i>
             </div>
-          </Link>
+          </div>
 
-          <Link style={{textDecoration:"none"}} to={'/login'} >
+          <div style={{textDecoration:"none"}} onClick={()=>onRouteChange('/login')} >
             <div title="Sign In" className="navbar_icons navbar_user">
                 <i className="fas fa-sign-in-alt"></i>
               
             </div>
-          </Link>
+          </div>
 
-          <Link style={{textDecoration:"none"}} to={'/signup'} >
+          <div style={{textDecoration:"none"}} onClick={()=>'/signup'}>
             <div title="Register" className="navbar_icons navbar_user">
             <i className="navbar_icons fas fa-user-plus"></i>
             </div>
-          </Link>
+          </div>
 
 
-          <Link  style={{textDecoration:"none"}} to={'/'} >
+          <div  style={{textDecoration:"none"}} onClick={()=>'/'} >
             <div title="Notifications" className="navbar_icons navbar_notification">
                 <i className="far fa-bell"></i>
                 <div className="navbar_notificationCount">5</div>
             </div>
-          </Link>
+          </div>
 
-          <Link style={{textDecoration:"none"}}  to={'/GoLive'} >
+          <div style={{textDecoration:"none"}}  onClick={()=>'/GoLive'} >
             <div title="Go Live" className="navbar_icons navbar_user">
                 <i className="navbar_icons fas fa-satellite-dish"></i>
             </div>
-          </Link>
+          </div>
 
-          <Link style={{textDecoration:"none"}} to={'/upload'} >
+          <div style={{textDecoration:"none"}} onClick={()=>'/upload'}>
             <div title="Upload Video" className="navbar_icons navbar_user">
                 <i class="fas fa-video"></i>
             </div>
-          </Link>
+          </div>
 
       </div>
   </div>

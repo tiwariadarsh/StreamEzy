@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../style/GoLive.css";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import axios from 'axios';
 import one from '../assets/1.svg' 
 import detail from '../assets/detail.svg' 
@@ -168,11 +168,11 @@ export default function Viewpage() {
               <div>Stream tags - {streamTags}</div>
               <div>Stream categories - {streamCategory}</div>
               <div>Stream description - {streamDescription}</div>
-              <Link style={{textDecoration:"none",textAlign: "center"}} to={'/stream-creator'} >
+              <div style={{textDecoration:"none",textAlign: "center"}} onClick={()=>window.location.href='/stream-creator'} >
                 <div>
                   <button>Go to Live Stream !</button>
                 </div>
-              </Link>
+              </div>
             </div>
             <div className='instructions'>      
               <h3>Go live using OBS :</h3>   

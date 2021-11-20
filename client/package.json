@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@truffle/hdwallet-provider": "^1.7.0",
     "Buffer": "0.0.0",
     "animate.css": "^4.1.1",
     "axios": "^0.22.0",
@@ -32,10 +33,12 @@
     "react-scripts": "4.0.3",
     "react-tagsinput": "^3.19.0",
     "react-toastify": "^8.1.0",
+    "semantic-ui-react": "^2.0.4",
     "tachyons": "^4.12.0",
     "uuid": "^8.3.2",
     "video.js": "^7.15.4",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "web3": "^1.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
