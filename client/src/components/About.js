@@ -2,7 +2,7 @@ import React from 'react'
 import "../style/About.css";
 import '../assets/bg3.jpg'
 
-export default function About() {
+export default function About({routeChange}) {
     return (
         <div className="about">
       <div clasName="anime">

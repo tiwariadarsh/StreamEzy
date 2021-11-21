@@ -173,7 +173,7 @@ render(){
     <div class="overlay-panel overlay-right">
       <h1 className="h1tag">Hello, Friend!</h1>
       <p className="para">Already have an account with us?</p>
-      <div onClick={()=>window.location.href='/login'}> <button className="ghost butt" id="signUp">Sign In</button> </div>
+      <div onClick={()=>this.props.routeChange('/login')}> <button className="ghost butt" id="signUp">Sign In</button> </div>
     </div>
   </div>
 </div>

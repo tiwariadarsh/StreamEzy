@@ -37,14 +37,14 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'register', // handles and captures routing state. Begin at sign in form
-      videoLink: '' // used to pass IPFS video link to 'View' component
+      route: '/',
+      videoLink: ''
     }
   }
-  onRouteChange = (route) => {
-    this.setState({route: route});
-  }
-  //handleItemClick = (e, { name }) => this.setState({ activeItem: name, color: 'teal' })
+  // onRouteChange = (route) => {
+  //   console.log('route change');
+  //   this.setState({route: route});
+  // }
 
   componentDidMount = async () => {
     try {
@@ -103,162 +103,53 @@ class App extends Component {
 
   
   render() {
-   
+
+    const routeChange = (route) => {
+      this.setState({route})
+    }
 
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
 
-    const  rathin =()=> {
+    const  rathin = ( )=> {
       switch(this.state.route) {
         case "/":
-          <Home onRouteChange={this.onRouteChange} />
-        break;
-       case "/About":
-<About onRouteChange={this.onRouteChange} />
-        break;
-
-        case "/GoLive":
-          <GoLive onRouteChange={this.onRouteChange} />
-         break;
-         case "/login":
-          <login onRouteChange={this.onRouteChange} />
-           break;
-           case "/signup":
-            <Signup onRouteChange={this.onRouteChange} />
-             break;
-             case "/upload":
-              <Upload onRouteChange={this.onRouteChange} />
-               break;
-               case "/profile":
-                <UserProfile onRouteChange={this.onRouteChange} />
-                 break;
-                 case "/stream-creator":
-              <LiveStreamCreator onRouteChange={this.onRouteChange} />
-                   break;
-                   case "/test":
-                <Test onRouteChange={this.onRouteChange} />
-                     break;
-         
-   
-}
+          return <Home routeChange={routeChange} />
+          break;
+        case "/about":
+          return <About routeChange={routeChange} />
+          break;
+        case "/golive":
+          return <GoLive routeChange={routeChange} />
+          break;
+        case "/login":
+          return <Login routeChange={routeChange} />
+          break;
+        case "/signup":
+          return <Signup routeChange={routeChange} />
+          break;
+        case "/upload":
+          return <Upload routeChange={routeChange} />
+          break;
+        case "/profile":
+          return <UserProfile routeChange={routeChange} />
+          break;
+        case "/stream-creator":
+          return <LiveStreamCreator routeChange={routeChange} />
+          break;
+        case "/test":
+          return <Test routeChange={routeChange} />
+          break; 
+      }
     }
-
   return (
-    <div className="App">
-    
-      {window.innerWidth>650?<Sidebar/>:''}
-      <Navbar onRouteChange={this.onRouteChange} />
-      
-    { rathin()}
-
-      {/* }
-        { this.state.route !== 'Login' & this.state.route !== 'Signup'
-          ? ( this.state.route === 'Home'
-            ?
-            : ( this.state.route === 'ViewVideoPage'
-              ? <ViewVideoPage onRouteChange={this.onRouteChange} videoLink={this.state.videoLink}/>
-              : <Upload onRouteChange={this.onRouteChange} /> )
-              )
-          : ( this.state.route === 'Login'
-            ? <Login onRouteChange={this.onRouteChange}/>
-            : <Signup onRouteChange={this.onRouteChange}/> )
-        } */}
-    
-    </div>
-  );
-}
+      <div className="App">
+        {window.innerWidth>650?<Sidebar/>:''}
+        <Navbar routeChange={routeChange} />
+        { rathin()}
+      </div>
+    );
+  }
 }
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import './App.css';
-// import { BrowserRouter as Router ,Switch,Route } from 'react-router-dom';
-// import Navbar from './components/Navbar';
-// import Sidebar from './components/Sidebar';
-// import Signup from './components/Signup';
-// import Login from './components/Login';
-// //import Home from './components/Home';
-// import About from './components/About';
-// import GoLive from './components/GoLive';
-// import UserProfile from './components/UserProfile';
-// import Upload from './components/Upload';
-// import LiveStreamCreator from './components/LiveStreamCreator';
-// import LiveStreamViewer from './components/LiveStreamViewer';
-// import Test from './components/Test';
-
-
-// function App() {
-//   return (
-//     <div className="App">
-
-//             {window.innerWidth>650?<Sidebar/>:''}
-//       <Router>
-//         <Navbar/>
-//         <Switch>
-//             <Route exact path="/">
-//               {/* <Home/> */}
-//             </Route>
-//             <Route exact path="/About">
-//               <About/>
-//             </Route>
-//             <Route exact path="/GoLive">
-//               <GoLive/>
-//             </Route>
-//             <Route exact path="/login">
-//               <div className="d-flex justify-content-center align-item-center mt-5">
-//               <Login/>
-//               </div>
-//             </Route>
-//             <Route exact path="/signup">
-//               <div className="d-flex justify-content-center align-item-center mt-5">
-//               <Signup/>
-//               </div>
-//             </Route>
-//             <Route exact path="/upload">
-//               <div className="d-flex justify-content-center align-item-center mt-5">
-//                 <Upload />
-//               </div>
-//             </Route>
-//             <Route exact path = '/profile'>
-//               <UserProfile/>
-//             </Route>
-//             <Route exact path = '/stream-creator'>
-//               <LiveStreamCreator/>
-//             </Route>
-//             <Route exact path = '/test'>
-//               <Test/>
-//             </Route>
-//           </Switch>
-//          </Router>
-//     </div>
-//   );
-// }
-
-// export default App;
-

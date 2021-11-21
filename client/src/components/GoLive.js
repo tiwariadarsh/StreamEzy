@@ -11,8 +11,8 @@ import loader from '../assets/loader.gif'
 
 // import ReactPlayer from 'react-player';
 
-export default function Viewpage() {
-
+export default function Viewpage({routeChange}) {
+console.log(routeChange);
   const [apiKey, setapiKey] = useState('ced26452-f2bd-4173-a0bc-93b4c19628c0')
   const [streamName, setStreamName] = useState('')
   const [streamCategory, setStreamCategory] = useState('')
@@ -168,7 +168,7 @@ export default function Viewpage() {
               <div>Stream tags - {streamTags}</div>
               <div>Stream categories - {streamCategory}</div>
               <div>Stream description - {streamDescription}</div>
-              <div style={{textDecoration:"none",textAlign: "center"}} onClick={()=>window.location.href='/stream-creator'} >
+              <div style={{textDecoration:"none",textAlign: "center"}} onClick={()=>routeChange('/stream-creator')} >
                 <div>
                   <button>Go to Live Stream !</button>
                 </div>
