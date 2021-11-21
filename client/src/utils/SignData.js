@@ -1,8 +1,8 @@
-const SignData = async (username, accountAddress, web3) => {
+const SignData = async (name, accountAddress, web3) => {
     let signedData;
-
+  console.log(web3,web3.eth)
     await web3.eth.personal.sign(
-        username,
+        name,
         accountAddress,
         (err, signature) => {
             if (err) {

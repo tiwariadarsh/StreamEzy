@@ -23,7 +23,7 @@ class ViewVideoPage extends React.Component {
           }}
         >
           <button
-            onClick={() => onRouteChange("home")}
+            onClick={() => this.props.onRouteChange("home")}
             className="ViewVideo_All_Button"
           >
             All Videos

@@ -16,14 +16,18 @@ class SignUp extends Component {
 
     onSignUp = async (event) => {
       event.preventDefault()
-      if(this.state.password!==this.state.confirmPassword || this.state.name === "" || this.state.email === "" || this.state.password === "" || this.state.confirmPassword === ""){
+      console.log(this.state.password)
+      console.log(this.state.confirmPassword)
+      console.log(this.state.name)
+      console.log(this.state.email)
+      if(this.state.password!==this.state.confirmPassword || this.state.name === '' || this.state.email === '' || this.state.password === '' || this.state.confirmPassword === ''){
         window.alert('Enter Valid Details!')
         // setname('')
         // setpassword('')
         // setemail('')
         // setconfirmPassword('')
         this.setState({
-          alertMessage: "Error!",
+          // alertMessage: "Error!",
           status: 'failed',
           password: '',
           confirmPassword:'',
@@ -61,7 +65,7 @@ class SignUp extends Component {
             // } else {
                 let userAddress = await this.props.contract.methods.getUserAddress()
                     .call({ from: this.props.account });
-
+                 console.log(userAddress)
                 if (userAddress !== '0x0000000000000000000000000000000000000000') {
                   window.alert('this account already exists')
                     this.setState({
@@ -75,8 +79,10 @@ class SignUp extends Component {
 
                     return;
                 } else {
-                    let hash = await AuthenticationHash(name, this.props.account, password, email, confirmPassword ,this.props.web3);
-
+                  window.alert('okay')
+                  console.log(this.props.web3)
+                    let hash = await AuthenticationHash(email, this.props.account, password,  this.props.web3);
+                     
                     await this.props.contract.methods.register(hash).send({ from: this.props.account });
                     window.alert("Signup successful")
 
@@ -118,10 +124,10 @@ render(){
       type='text'
       name='name'
       placeholder='Name'
-      value={this.state.Name}
+      value={this.state.name}
       autoComplete="Name"
       className="inp" 
-      onChange={e => this.setState({ Name: e.target.value })}
+      onChange={e => this.setState({ name: e.target.value })}
    
      />
 
@@ -163,7 +169,7 @@ render(){
     />
 
     
-    <button onClick={this.onSignUp} className="butt">Sign Up</button>  
+    <button onClick={(event)=>this.onSignUp(event)}  className="butt">Sign Up</button>  
      
  
   </form>
@@ -173,7 +179,7 @@ render(){
     <div class="overlay-panel overlay-right">
       <h1 className="h1tag">Hello, Friend!</h1>
       <p className="para">Already have an account with us?</p>
-      <div onClick={()=>window.location.href='/login'}> <button className="ghost butt" id="signUp">Sign In</button> </div>
+      <div onClick={()=>this.props.routeChange('/login')}> <button className="ghost butt" id="signUp">Sign In</button> </div>
     </div>
   </div>
 </div>

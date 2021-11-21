@@ -125,6 +125,7 @@ class Login extends Component {
 
 
   render() {
+    console.log(this.props);
     return (
 		<div className="login-body">
       <div className="login">
@@ -172,7 +173,7 @@ class Login extends Component {
 				<h1 className="h1tag">Hello, Friend!</h1>
 				<p className="para">Enter your personal details and start journey with us</p>
 
-				<div onClick={()=>window.location.href='/signup'}> <button className="ghost butt" id="signUp">Sign Up</button> </div>
+				<div onClick={()=>this.props.routeChange('/signup')}> <button className="ghost butt" id="signUp">Sign Up</button> </div>
 			</div>
 		</div>
 	</div>
