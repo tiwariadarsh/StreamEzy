@@ -161,6 +161,7 @@ class Login extends Component {
 			value={this.state.password}
 			autoComplete="current-password"
 			name='password'
+            className="inp" 
 			onInput={e => this.setState({ password: e.target.value })}
 		    />
 		
