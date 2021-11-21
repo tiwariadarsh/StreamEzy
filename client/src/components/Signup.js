@@ -170,7 +170,7 @@ render(){
                   onChange={e => this.setState({ confirmPassword: e.target.value })}
                 />
 
-                <button onClick={this.onSignUp} className="butt">Sign Up</button>  
+                <button onClick={(event)=>this.onSignUp(event)} className="butt">Sign Up</button>  
 
               </form>
             </div>
