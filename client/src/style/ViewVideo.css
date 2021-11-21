@@ -1,8 +1,9 @@
 .ViewVideo{
-    margin-top: 3rem;
-    margin-left: 20px;
+    margin-top: 4.4rem;
+    margin-left: 67px;
     display: flex;
     width: calc(100vw - 67px);
+    height: calc(100vh - 4.4rem);
 }
 
 .ViewVideo_left{
@@ -89,8 +90,7 @@
 
 .ViewVideo_All_Button:hover{
     background-color: black;
-    color: white;
-    border: rgba(233, 216, 216, 0.5) 2px solid;
+    color: tan;
 }
 
 .ViewVideo_description{
@@ -128,4 +128,11 @@
 
 .chat span:nth-last-child(1){
     font-size: 0.9em;
+}
+
+.allVideoButton{
+    position: absolute;
+    top: 4.4rem;
+    right: 2.2rem;
+    margin-top: 1rem;
 }

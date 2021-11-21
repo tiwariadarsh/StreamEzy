@@ -23,28 +23,21 @@ import Contract from './Contract';
 
 
 class App extends Component {
-  state = {
-    web3: null,
-    account: null,
-    contract: null,
-    balance: null,
-    signedUp: false,
-    loggedIn: false,
-    email: ''
-    //color: 'teal'
-  };
 
   constructor() {
     super();
     this.state = {
       route: '/',
-      videoLink: ''
+      videoLink: '',
+      web3: null,
+      account: null,
+      contract: null,
+      balance: null,
+      signedUp: false,
+      loggedIn: false,
+      email: ''
     }
   }
-  // onRouteChange = (route) => {
-  //   console.log('route change');
-  //   this.setState({route: route});
-  // }
 
   componentDidMount = async () => {
     try {
@@ -66,7 +59,6 @@ class App extends Component {
   start = async () => {
     await this.getAccount();
     const { web3, contract , account } = this.state;
-
     console.log("web3 =", web3);
     console.log("Contract =", contract);
     console.log("Acoount =", account);
@@ -101,7 +93,6 @@ class App extends Component {
     this.setState({ loggedIn });
   }
 
-  
   render() {
 
     const routeChange = (route) => {
@@ -112,7 +103,7 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
 
-    const  rathin = ( )=> {
+    const  routes = ( )=> {
       switch(this.state.route) {
         case "/":
           return <Home routeChange={routeChange} />
@@ -128,11 +119,11 @@ class App extends Component {
           break;
         case "/signup":
           return <Signup 
-          contract={this.state.contract} 
-          account={this.state.account}
-          web3={this.state.web3}
-          accountCreated={this.accountCreated}
-          routeChange={routeChange} />
+                    contract={this.state.contract} 
+                    account={this.state.account}
+                    web3={this.state.web3}
+                    accountCreated={this.accountCreated}
+                    routeChange={routeChange} />
           break;
         case "/upload":
           return <Upload routeChange={routeChange} />
@@ -152,7 +143,7 @@ class App extends Component {
       <div className="App">
         {window.innerWidth>650?<Sidebar/>:''}
         <Navbar routeChange={routeChange} />
-        { rathin()}
+        { routes()}
       </div>
     );
   }

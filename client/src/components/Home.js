@@ -58,6 +58,7 @@ class Home extends Component {
       Function below retrieves thumbnail, video, and video title information from 'playlist' contract and constructs an array of 'Thumbnail' components.
       Functionality was created in such a way so that render never has to return a promise
       */
+
     
       createVideos = async () => {
         let videos = [];
@@ -99,14 +100,22 @@ class Home extends Component {
       }
     
       render() {
-       
+
         return (
-          <div className="home">
-              { this.state.route !== 'view' ? 
-                <> {this.state.Videos} </> :
-                <ViewVideoPage onRouteChange={this.onRouteChange} videoLink={this.state.videoLink}/>
+          <>
+          {this.state.route !== 'view' ? 
+            <div className="home">
+              {
+                this.state.Videos?
+                this.state.Videos:
+                <div className='loaderHome'>
+                  <img src={loader}/>
+                </div>
               }
-            </div>
+            </div>:
+            <ViewVideoPage onRouteChange={this.onRouteChange} videoLink={this.state.videoLink}/>
+          }
+          </>
         );
       }
 }

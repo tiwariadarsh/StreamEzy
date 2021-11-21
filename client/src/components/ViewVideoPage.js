@@ -12,23 +12,13 @@ class ViewVideoPage extends React.Component {
   render() {
     const { onRouteChange } = this.props;
     return (
+      <>
+      <div className='allVideoButton'>
+        <button onClick={() => this.props.onRouteChange("home")} className="ViewVideo_All_Button">
+          All Videos
+        </button>
+      </div>
       <div className="ViewVideo">
-        <div
-          style={{
-            position: "absolute",
-            top: "0",
-            right: "0",
-            marginTop: "1rem",
-            marginRight: "2rem",
-          }}
-        >
-          <button
-            onClick={() => this.props.onRouteChange("home")}
-            className="ViewVideo_All_Button"
-          >
-            All Videos
-          </button>
-        </div>
         <div className="ViewVideo_left">
           <div className="ViewVideo_video">
             <video
@@ -64,16 +54,40 @@ class ViewVideoPage extends React.Component {
             </div>
           </div>
           <div className="ViewVideo_description">
-            PUBG: NEW STATE, is a new Battle Royale developed by PUBG STUDIOS,
-            the company <br />
-            behind PLAYERUNKNOWN'S BATTLEGROUNDS (PUBG). <br />
-            In PUBG: NEW STATE, 100 players will fight on a new battleground
-            with various weapons and <br />
-            strategies until only one party remains. Utilize gear, vehicles, and
-            consumables to survive the <br />
-            shrinking battleground to become the last Survivor standing! Find
-            out more about the game <br />
-            here: https://newstate.pubg.com <br />
+          PUBG: NEW STATE, is a new Battle Royale developed by PUBG STUDIOS, the company <br />
+                    behind PLAYERUNKNOWN'S BATTLEGROUNDS (PUBG). <br />
+
+                    In PUBG: NEW STATE, 100 players will fight on a new battleground with various weapons and               <br />
+                    strategies until only one party remains. Utilize gear, vehicles, and consumables to survive the                 <br />
+                    shrinking battleground to become the last Survivor standing! Find out more about the game               <br />
+                    here: https://newstate.pubg.com                 <br />
+                    <br />
+                    Download the game now: https://pubgnewstate.onelink.me/7alc/...                 <br />
+                    <br />
+                    Song Credits - Bad Boy x Bad Girl by Badshah ft. Nikhita Gandhi
+                    <br />
+                    PUBG: NEW STATE Social Media Handles:               <br />
+                    Facebook - https://www.facebook.com/OfficialPUBG...                 <br />
+                    Instagram - https://www.instagram.com/pubgnewstat...                <br />
+                    YouTube - https://www.youtube.com/channel/UCnEa...              <br />
+                    Twitter - https://twitter.com/PUBG_NEWSTATE                 <br />
+                    <br />
+                    <br />
+                    Check out my second channel: https://www.youtube.com/honestlybytan...               <br />
+                    <br />
+                    Follow me on Instagram: https://instagram.com/tanmaybhat                <br />
+                    Follow me on my Discord: https://discordapp.com/invite/6Jf4de9              <br />
+                    Submit your memes on Reddit: https://www.reddit.com/r/TanmayBhatKe...               <br />
+                    <br />
+                    Become a member for exclusive content and privileges: https://www.youtube.com/channel/UC0rE...              <br />
+                    <br />
+                    Channel Manager: Revant Talekar | https://www.instagram.com/revanttalekar/              <br />
+                    <br />
+                    My videos use Epidemic sounds. Visit this link for a 30 day free trial: http://share.epidemicsound.com/38jcPQ               <br />
+                    <br />
+                    Click here to live my life: https://amazon.in/shop/tanmaybhat               <br />
+                    <br />
+                    #NewStateTime #PUBGNEWSTATE #NextGenBattleRoyale                <br />
           </div>
         </div>
         <div className="ViewVideo_rigth">
@@ -182,7 +196,8 @@ class ViewVideoPage extends React.Component {
             <div></div>
           </div>
         </div>
-      </div>
+      </div>     
+      </>
     );
   }
 }
