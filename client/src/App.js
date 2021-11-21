@@ -37,7 +37,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'register', // handles and captures routing state. Begin at sign in form
+      route: 'signup', // handles and captures routing state. Begin at sign in form
       videoLink: '' // used to pass IPFS video link to 'View' component
     }
   }
@@ -115,30 +115,30 @@ class App extends Component {
           <Home onRouteChange={this.onRouteChange} />
         break;
        case "/About":
-<About onRouteChange={this.onRouteChange} />
+       <About onRouteChange={this.onRouteChange} />
         break;
 
         case "/GoLive":
           <GoLive onRouteChange={this.onRouteChange} />
-         break;
-         case "/login":
-          <login onRouteChange={this.onRouteChange} />
+           break;
+           case "/login":
+          <Login onRouteChange={this.onRouteChange} />
            break;
            case "/signup":
-            <Signup onRouteChange={this.onRouteChange} />
-             break;
-             case "/upload":
-              <Upload onRouteChange={this.onRouteChange} />
-               break;
-               case "/profile":
-                <UserProfile onRouteChange={this.onRouteChange} />
-                 break;
-                 case "/stream-creator":
-              <LiveStreamCreator onRouteChange={this.onRouteChange} />
-                   break;
-                   case "/test":
-                <Test onRouteChange={this.onRouteChange} />
-                     break;
+          <Signup onRouteChange={this.onRouteChange} />
+           break;
+           case "/upload":
+          <Upload onRouteChange={this.onRouteChange} />
+           break;
+           case "/profile":
+          <UserProfile onRouteChange={this.onRouteChange} />
+           break;
+           case "/stream-creator":
+          <LiveStreamCreator onRouteChange={this.onRouteChange} />
+           break;
+           case "/test":
+          <Test onRouteChange={this.onRouteChange} />
+           break;
          
    
 }
@@ -149,7 +149,11 @@ class App extends Component {
     
       {window.innerWidth>650?<Sidebar/>:''}
       <Navbar onRouteChange={this.onRouteChange} />
-      
+      <Signup onRouteChange={this.onRouteChange} />
+      <GoLive onRouteChange={this.onRouteChange} />
+      <About onRouteChange={this.onRouteChange} />
+      <Upload onRouteChange={this.onRouteChange} />
+      <ViewVideoPage onRouteChange={this.onRouteChange}/>
     { rathin()}
 
       {/* }
