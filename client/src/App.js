@@ -85,7 +85,7 @@ class App extends Component {
     this.setState({ signedUp });
   }
 
-  userSignedIn = async (loggedIn, email) => {
+  userSignedIn = async (loggedIn, email,address) => {
     this.setState({ loggedIn, email });
   }
 

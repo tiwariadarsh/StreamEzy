@@ -142,27 +142,27 @@ class Login extends Component {
 
 
 			<input   //email
-			required
-			type='text'
-			name='email'
-			placeholder='Email'
-			value={this.state.email}
-			autoComplete="email"
-			className="inp" 
-			onInput={e => this.setState({ email: e.target.value })}
+                required
+                type='text'
+                name='email'
+                placeholder='Email'
+                value={this.state.email}
+                autoComplete="email"
+                className="inp" 
+                onInput={e => this.setState({ email: e.target.value })}
 	        />
 
 
 			<input  //password
-			required 
-			type='password'
-			name='password'
-			placeholder='Password'
-			value={this.state.password}
-			autoComplete="current-password"
-			name='password'
-            className="inp" 
-			onInput={e => this.setState({ password: e.target.value })}
+                required 
+                type='password'
+                name='password'
+                placeholder='Password'
+                value={this.state.password}
+                autoComplete="current-password"
+                name='password'
+                className="inp" 
+                onInput={e => this.setState({ password: e.target.value })}
 		    />
 		
 			<button onClick={this.onSignIn} className="butt">Sign In</button>

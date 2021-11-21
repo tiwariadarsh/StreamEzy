@@ -14,7 +14,7 @@ export default function Navbarx ({routeChange}) {
 
           <div style={{textDecoration:"none"}} onClick={()=>routeChange('/about')} >
             <div title="About Us" className="navbar_icons navbar_user">
-                <i class="navbar_icons fas fa-question-circle"></i>
+                <i className="navbar_icons fas fa-question-circle"></i>
             </div>
           </div>
 
@@ -53,7 +53,7 @@ export default function Navbarx ({routeChange}) {
 
           <div style={{textDecoration:"none"}} onClick={()=>routeChange('/upload')}>
             <div title="Upload Video" className="navbar_icons navbar_user">
-                <i class="fas fa-video"></i>
+                <i className="fas fa-video"></i>
             </div>
           </div>
 
