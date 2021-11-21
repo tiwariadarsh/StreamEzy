@@ -70,52 +70,53 @@ export default function Upload()
             style={{
               fontFamily: "Roboto Mono",
               paddingBottom: "15px",
-              marginTop: "3rem",
+              marginTop: "4.8rem",
+              marginLeft:"14rem",
             }}
           >
             Upload your video below
           </h1>
           <a
             className="bounce fa fa-arrow-down fa-2x"
-            style={{ paddingBottom: "20px", color: "red" }}
+            style={{ paddingBottom: "20px", color: "red", marginLeft:"16rem"}}
           ></a>
           <div
             style={{
-              paddingLeft: "10%",
-              width: "50rem",
+              paddingLeft: "2%",
               padding:"2em",
               boxShadow: "0 6px 16px 0 rgb(0 0 0 / 20%)"
             }}
+            className="uf"
           >
             <form className="form-inline" style={{ paddingBottom: "40px" }}>
-              <h6 style={{ fontFamily: "Roboto Mono", marginRight: "45px" }}>
+              <h6 className="uf-lable">
                 Video Title:
               </h6>
               <input
-                style={{ fontFamily: "Roboto Mono" }}
-                className="form-control form-control-sm ml-3 w-75"
+                style={{ marginLeft:"6.3rem" }}
+                className="uf-input"
                 type="text"
                 placeholder="Title"
                 aria-label="Search"
               />
             </form>
             <form className="form-inline" style={{ paddingBottom: "40px" }}>
-              <h6 style={{ fontFamily: "Roboto Mono" }}>Video Description:</h6>
+              <h6 className="uf-lable">Video Description:</h6>
               <input
-                style={{ fontFamily: "Roboto Mono" }}
-                className="form-control form-control-sm ml-3 w-75"
+                style={{  }}
+                className="uf-input"
                 type="text"
                 placeholder="Description"
                 aria-label="Search"
               />
             </form>
             <form className="form-inline" style={{ paddingBottom: "20px" }}>
-              <h6 style={{ fontFamily: "Roboto Mono" }}> Thumbnail: </h6>
+              <h6 className="uf-lable"> Thumbnail: </h6>
               <input
                 style={{
-                  fontFamily: "Roboto Mono",
                   paddingLeft: "60px",
                   fontSize: "15px",
+                  marginLeft:"2.6rem"
                 }}
                 type="file"
                 accept='image/*'
@@ -124,12 +125,12 @@ export default function Upload()
               />
             </form>
             <form className="form-inline mt-4 mb-4">
-              <h6 style={{ fontFamily: "Roboto Mono" }}> Video File: </h6>
+              <div className="uf-lable"> Video File: </div>
               <input
                 style={{
-                  fontFamily: "Roboto Mono",
                   paddingLeft: "60px",
                   fontSize: "15px",
+                  marginLeft:"2.9rem"
                 }}
                 type="file"
                 accept='video/*'
@@ -137,10 +138,10 @@ export default function Upload()
               />
             </form>
             <form className="form-inline" style={{ paddingBottom: "40px" }}>
-              <h6 style={{ fontFamily: "Roboto Mono", marginRight: "3rem" }}>
+              <h6 style={{marginTop:"1.1rem" }} className="uf-lable">
                 Category:
               </h6>
-              <select style={{ marginLeft: "1rem" }}>
+              <select style={{ marginLeft: "7rem" }}>
                 <option disabled="true">Select category</option>
                 <option value="gaming">Game</option>
                 <option value="sport">Sport</option>
