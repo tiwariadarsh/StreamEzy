@@ -18,6 +18,7 @@ import React, { Component } from "react";
 import web3Connection from './web3Connection';
 
 import Contract from './Contract';
+import background from './assets/bg3.jpg';
 
 
 
@@ -129,7 +130,19 @@ class App extends Component {
           return <Upload routeChange={routeChange} />
           break;
         case "/profile":
-          return <UserProfile routeChange={routeChange} />
+          return <UserProfile 
+          style={{
+            width: '100vw',
+            height: '100vh',
+            backgroundImage: `url(${background})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          routeChange={routeChange} />
           break;
         case "/stream-creator":
           return <LiveStreamCreator routeChange={routeChange} />
