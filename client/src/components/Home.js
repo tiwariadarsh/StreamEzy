@@ -3,7 +3,7 @@ import VideoCard from "./VideoCard";
 import '../style/Home.css'
 import ViewVideoPage from './ViewVideoPage';
 import loader from '../assets/loader.gif';
-//import playlist from '../contracts/playlist.json'
+import playlist from '../contracts/playlist.json'
 
 
 
@@ -23,10 +23,9 @@ The code below connects to Rinkeby Ethereum network via Infura node and creates 
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/fb5fe481ea6342b8b40578e5a3150138'));
 
-const contractAddress = '0xc223Fb0Bcc860Dc91937AD1b3063C25FA3b15d78';
-const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"},{"internalType":"string","name":"videoHash","type":"string"}],"stateMutability":"view","type":"function"}];
-// const playlist = JSON.parse(abi);
-const contract = new web3.eth.Contract(abi, contractAddress); 
+const contractAddress = '0xf99b3AE3812c4014D782aF501Aa4dbA0005889Ea';
+
+const contract = new web3.eth.Contract(playlist, contractAddress); 
 console.log(contract)
 //*******************************************************
 
@@ -49,25 +48,6 @@ async function rpc(func) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Home extends Component {
  
   constructor() {
@@ -78,7 +58,8 @@ class Home extends Component {
         videoId:'',
         currentVideo:null
       }
-    }
+   }
+
   onRouteChange = (route) => {
     this.setState({route: route});
   }
@@ -101,15 +82,20 @@ class Home extends Component {
     var result;
     var stringex;
     var length = await rpc(contract.methods.getArrayLength()); // get number of videos uploaded to website
+    result = await rpc(contract.methods.getVideos()); 
+    console.log(result);
+    console.log(length);
     for (var i = 0; i < length; i++) {
-      result = await rpc(contract.methods.getVideo(i)); // contract function returns a string containing video title, thumbnail hash, and video hash
-      result = result.split("/");
-      videoTitle = result[0];
-      thumbnailHash = result[1];
-      videoHash = result[2];
+      result = await rpc(contract.methods.getVideo(i)); 
+      console.log(result);// contract function returns a string containing video title, thumbnail hash, and video hash
+      // result = result.split("/");
+      videoTitle = result.title;
+      thumbnailHash = result.thumbnailHash;
+      videoHash = result.videoHash;
       stringex = "https://ipfs.io/ipfs/"
       thumbnailLink = stringex.concat(thumbnailHash); // construct link to thumbnail that users can navigate to
       videoLink = stringex.concat(videoHash); // construct link to video that users can navigate to
+      console.log(videoLink,thumbnailLink);
       videos.push(
         <VideoCard 
           key={i}

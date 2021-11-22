@@ -1,11 +1,10 @@
 import React , {Fragment} from 'react';
 import "../style/Upload.css";
-import { MDBBtn } from "mdbreact";
 import { create } from 'ipfs-http-client';
 import loader from '../assets/loader.gif' 
-
+import { MDBBtn } from "mdbreact";
+import abi from '../contracts/playlist.json'
 import { ethers } from "ethers";
-
 /*
 The code below connects to Infura IPFS node via 'ipfs-http-client' library
 */
@@ -14,10 +13,7 @@ The code below connects to Infura IPFS node via 'ipfs-http-client' library
 
 
 // const ipfsClient = require('ipfs-http-client');
-const ipfs = new create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-
-
-
+const client = new create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 /*
 The code below connects to Rinkeby Ethereum network via Infura node and creates a contract object for 'playlist' contract.
@@ -26,18 +22,17 @@ The code also contains private key information of account responsible for paying
 
 const Web3 = require('web3');
 const Tx = require('ethereumjs-tx').Transaction;
-
 const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/3495fbda871a4432809be9ee44d6dc0a'));
 
 const fromAddress = '0xe90596a9aa399c8193f3623bed2e11687c0dca6e';
 const privateKey = new Buffer('2f7bc694ae41c8dfea02b8628dfb5326dff34dbdb9cb0f03f15909d03c32b1b2', 'hex');
 
-const contractAddress = '0xc223fb0bcc860dc91937ad1b3063c25fa3b15d78';
-//const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"},{"internalType":"string","name":"videoHash","type":"string"}],"stateMutability":"view","type":"function"}];
+const contractAddress = '0xf99b3AE3812c4014D782aF501Aa4dbA0005889Ea';
+// const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"},{"internalType":"string","name":"videoHash","type":"string"}],"stateMutability":"view","type":"function"}];
 
-const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"},{"internalType":"string","name":"videoHash","type":"string"}],"stateMutability":"view","type":"function"}];
-const playlist = JSON.parse(abi);
-const contract = new web3.eth.Contract(playlist, contractAddress);
+//const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"},{"internalType":"string","name":"videoHash","type":"string"}],"stateMutability":"view","type":"function"}];
+// const playlist = JSON.parse(abi);
+const contract = new web3.eth.Contract(abi, contractAddress);
 
 
 /*
@@ -46,15 +41,16 @@ The function also encodes the data for a function call to 'playlist' smart contr
 */
 
 
-function createRawTransaction(videoTitle, thumbnailHash, videoHash ,categories,description,creator) {
+async function createRawTransaction(videoTitle, thumbnailHash, videoHash ,categories,description) {
   const txData = {
     gasLimit: web3.utils.toHex(3000000),
     gasPrice: web3.utils.toHex(10e9),
     to: contractAddress,
     from: fromAddress,
-    data: contract.methods.addVideo(videoTitle, thumbnailHash, videoHash ,categories,description,creator).encodeABI()
+    data: contract.methods.addVideo(videoTitle, thumbnailHash, videoHash, description, categories).encodeABI()
   }
-  sendRawTransaction(txData);
+  const result = await sendRawTransaction(txData);
+  console.log(result);
 }
 
 
@@ -146,43 +142,22 @@ class Upload extends React.Component {
     event.preventDefault()
     if (this.state.videoTitle == '' || this.state.thumbnailBuffer == '' || this.state.videoBuffer == '') {
       alert("No video title, attached thumbnail, or attached video!");
-    } else if (await run(this.state.thumbnailHash, this.state.videoHash)) {
-      alert("Thumbnail and/or video already exists!");
     } else {
       this.setState({status: 'Uploading...'})
       document.getElementById("myBtn").disabled = true; // disable submit button
-      for await (const file of ipfs.add(this.state.thumbnailBuffer)) {
-        this.setState({ thumbnailHash: file.path })
-        console.log('thumbnailHash', this.state.thumbnailHash)
-      }
-      for await (const file of ipfs.add(this.state.videoBuffer)) {
-        this.setState({ videoHash: file.path })
-        console.log('videoHash', this.state.videoHash)
-        this.setState({status: 'Done!'}) // notify user of completion after both thumbnail and video have been uploaded to IPFS
-      }
-      createRawTransaction(this.state.videoTitle, this.state.thumbnailHash, this.state.videoHash);
+      const videoUpload = await client.add(this.state.videoBuffer)
+      const thumbnailUpload = await client.add(this.state.thumbnailBuffer)
+      console.log(videoUpload.cid.toString(),thumbnailUpload.cid.toString());
+      this.setState({thumbnailHash:thumbnailUpload.cid.toString()})
+      this.setState({videoHash:videoUpload.cid.toString()})
+      createRawTransaction(this.state.videoTitle, this.state.thumbnailHash, this.state.videoHash, this.state.categories, this.state.description);    
     }
   }
 
-
-
-
-
-
-
-
-
-  
   render() {
     //const { onRouteChange } = this.props;
 
     return (
-    //   <div>
-    //   <Fragment>
-    //   <div className="navigation-bar-2">
-    //     <MDBBtn onClick={() => onRouteChange('home')} color="mdb-color">Home</MDBBtn>
-    //   </div>
-    // </Fragment>
         <div className="upload">        
         <div className='loaderUpload'>           
         <img src={loader}/> 
@@ -221,6 +196,7 @@ class Upload extends React.Component {
                 placeholder="Title"
                 aria-label="Search"
                 onChange={this.onTitleChange}
+                name='name'
               />
             </form>
             <form className="form-inline" style={{ paddingBottom: "40px" }}>
@@ -232,6 +208,7 @@ class Upload extends React.Component {
                 placeholder="Description"
                 aria-label="Search"
                 onChange={this.onDescriptionChange}
+                name='description'
               />
             </form>
             <form className="form-inline" style={{ paddingBottom: "20px" }}>
@@ -292,70 +269,6 @@ class Upload extends React.Component {
 }
 
 export default Upload;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // export default function Upload()
 // {

@@ -18,7 +18,7 @@ class ViewVideoPage extends React.Component {
     const userref = doc(db, "users",JSON.parse(window.localStorage.getItem('currentuser'))['address']);
     const userdata = await getDoc(userref);
     console.log(this.state.liked);
-    if(userdata.data()['likedVideos'].includes(this.props.videoId)){
+    if(userdata.data()['likedVideos']?.includes(this.props.videoId)){
       this.setState({liked:true})
     }else{
       this.setState({liked:false})
