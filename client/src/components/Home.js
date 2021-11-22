@@ -3,30 +3,73 @@ import VideoCard from "./VideoCard";
 import '../style/Home.css'
 import ViewVideoPage from './ViewVideoPage';
 import loader from '../assets/loader.gif';
+//import playlist from '../contracts/playlist.json'
 
+
+
+
+
+
+//*******************************************************
+// NOTES: 
+//    - Smart contract address for 'playlist' contract required here!
+//    - Search bar does not actually work (also decide whether it should redirect to new page or filter)
+//    - Render uploaded videos left to right
+//    - Intelligently render new, uploaded videos without having to reload the page
+
+/*
+The code below connects to Rinkeby Ethereum network via Infura node and creates a contract object for 'playlist' contract
+*/
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/7b973cc4e4f04c9081ead788d635c300'));
+const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/fb5fe481ea6342b8b40578e5a3150138'));
 
-const contractAddress = '0x0447031221801f53dEbf8ba99A11d5e564D4d574';
+const contractAddress = '0xc223Fb0Bcc860Dc91937AD1b3063C25FA3b15d78';
 const abi = [{"inputs":[{"internalType":"string","name":"_title","type":"string"},{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"addVideo","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getArrayLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_id","type":"uint256"}],"name":"getVideo","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_thumbnailHash","type":"string"},{"internalType":"string","name":"_videoHash","type":"string"}],"name":"isExisting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"videoArray","outputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"date","type":"uint256"},{"internalType":"string","name":"title","type":"string"},{"internalType":"string","name":"thumbnailHash","type":"string"},{"internalType":"string","name":"videoHash","type":"string"}],"stateMutability":"view","type":"function"}];
-
+// const playlist = JSON.parse(abi);
 const contract = new web3.eth.Contract(abi, contractAddress); 
+console.log(contract)
+//*******************************************************
 
+
+
+
+/*********************************************************
+Function below handles asynchronous function calls to, in this case, 'playlist' contract
+*/
 
 async function rpc(func) {
-    while (true) {
-        try {
-            return await func.call();
-        }
-        catch (error) {
-            if (!error.message.startsWith("Invalid JSON RPC response"))
-                throw error;
-        }
-    }
+  while (true) {
+      try {
+          return await func.call();
+      }
+      catch (error) {
+          if (!error.message.startsWith("Invalid JSON RPC response"))
+              throw error;
+      }
+  }
 }
 
-class Home extends Component {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Home extends Component {
+ 
   constructor() {
       super();
       this.state = {
@@ -51,8 +94,10 @@ class Home extends Component {
   createVideos = async () => {
     let videos = [];
     var videoTitle;
-    var thumbnailHash; var thumbnailLink;
-    var videoHash; var videoLink;
+    var thumbnailHash; 
+    var thumbnailLink;
+    var videoHash; 
+    var videoLink;
     var result;
     var stringex;
     var length = await rpc(contract.methods.getArrayLength()); // get number of videos uploaded to website

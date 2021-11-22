@@ -30,7 +30,7 @@ class Login extends Component {
 	onSignIn = async (event) => {
 		event.preventDefault()
 
-        if (this.state.email !== '' && this.state.password !== '' && this.state.digicode !== '') {
+        if (this.state.email !== '' && this.state.password !== '' ) {
             let email = this.state.email.trim();
             let password = this.state.password.trim();
           
