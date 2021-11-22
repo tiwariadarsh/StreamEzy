@@ -1,7 +1,7 @@
 import React from "react";
 //import { Button } from "react-bootstrap";
 import "../style/ViewVideo.css";
-import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, getDoc, updateDoc, arrayUnion, arrayRemove, onSnapshot, increment  } from "firebase/firestore";
 import {db} from '../firebase'
 
 class ViewVideoPage extends React.Component {
@@ -10,40 +10,114 @@ class ViewVideoPage extends React.Component {
     this.state = {
       videoLink: props.videoLink,
       title: props.title,
-      liked:false
+      liked:false,
+      subscribed:false,
+      author:null,
+      comment:'',
+      comments:null,
+      likes:0
     };
   } 
 
   async componentDidMount(){
     const userref = doc(db, "users",JSON.parse(window.localStorage.getItem('currentuser'))['address']);
     const userdata = await getDoc(userref);
-    console.log(this.state.liked);
+    // console.log(this.state.liked);
     if(userdata.data()['likedVideos']?.includes(this.props.videoId)){
       this.setState({liked:true})
     }else{
       this.setState({liked:false})
     }
+    if(userdata.data()['subscribed']?.includes(this.props.currentVideo.creator)){
+      this.setState({subscribed:true})
+    }else{
+      this.setState({subscribed:false})
+    }
+
+    // TODO : replace addres with this.props.currentvideo.creator
+    const authorRef = doc(db, "users",'address');  
+    getDoc(authorRef).then(authorData=>{
+      // console.log(authorData.data());
+      this.setState({author:authorData.data()})
+    })
+        
+    // TODO : this.props.currentVideo.id
+    const videoRef = doc(db, "videos",'5');  
+    onSnapshot(videoRef,videoData=>{
+      // console.log(authorData.data());
+      this.setState({comments:videoData.data().comments}) 
+      this.setState({likes:videoData.data().likes})    
+      console.log(this.state.likes); 
+    })
   }
 
   render() {
     const likeVideo = async () => {
       // const videoref = doc(db, "videos");
-      console.log(this.props.currentVideo);
+      // console.log(this.props.currentVideo);
       const userref = doc(db, "users",JSON.parse(window.localStorage.getItem('currentuser'))['address']);
+      const videoRef = doc(db, "videos",'5');
       const userdata = await getDoc(userref);
-      if(userdata.data()['likedVideos'].includes(this.props.videoId)){
+      if(userdata.data()['likedVideos']?.includes(this.props.currentVideo.id)){
         this.setState({liked:false})
         await updateDoc(userref,{
-          likedVideos: arrayRemove(this.props.videoId)
+          likedVideos: arrayRemove(this.props.currentVideo.id)
+        })
+        await updateDoc(videoRef,{
+          likes:increment(-1)
         })
       }else{
         this.setState({liked:true})
         await updateDoc(userref,{
-          likedVideos: arrayUnion(this.props.videoId)
+          likedVideos: arrayUnion(this.props.currentVideo.id)
+        })
+        await updateDoc(videoRef,{
+          likes:increment(1)
         })
       }
     }
 
+    const subscribeCreator = async () => {
+      // const videoref = doc(db, "videos");
+      // console.log(this.props.currentVideo);
+      const userref = doc(db, "users",JSON.parse(window.localStorage.getItem('currentuser'))['address']);
+      const userdata = await getDoc(userref);
+      // console.log(this.props.currentVideo);
+      // console.log(userdata.data()['subscribed']);
+      if(userdata.data()['subscribed']?.includes(this.props.currentVideo.creator)){
+        this.setState({subscribed:false})
+        await updateDoc(userref,{
+          subscribed: arrayRemove(this.props.currentVideo.creator)
+        })
+      }else{
+        this.setState({subscribed:true})
+        await updateDoc(userref,{
+          subscribed: arrayUnion(this.props.currentVideo.creator)
+        })
+      }
+    }
+
+    const commentOnVideo = async () => {
+      if(this.state.comment === ''){
+        return;
+      }
+      try {
+        // TODO : this.props.currentVideo.id
+        const videoRef = doc(db, "videos",'5');
+        await updateDoc(videoRef,{
+          comments: arrayUnion({
+            userId:JSON.parse(window.localStorage.getItem('currentuser'))['address'],
+            name:JSON.parse(window.localStorage.getItem('currentuser'))['name'],
+            content:this.state.comment
+          })
+        })
+        this.setState({comment:''})
+      } catch (error) {
+        alert(error.message)
+      }
+    }
+
+    // console.log(this.state.author);
     const { onRouteChange } = this.props;
     return (
       <>
@@ -63,66 +137,31 @@ class ViewVideoPage extends React.Component {
           </div>
           <div className="ViewVideo_dashboard">
             <div className="ViewVideo_title">
-              {this.props.currentVideo[0]}
+              {this.props.currentVideo.title}
             </div>
             <div className="ViewVideo_icons">
               <div className="liveStreamCreator_like" onClick={likeVideo}>
                 {
                   this.state.liked?<i class="fas fa-thumbs-up"></i>:<i class="far fa-thumbs-up"></i>
                 }
+                {/* {this.state.likes} */}
               </div>
               <div className="ViewVideo_share">
-                <i class="fas fa-share"></i>
-              </div>
-              <div className="ViewVideo_comment">
-                <i class="fas fa-comment"></i>
+                <i className="fas fa-share"></i>
               </div>
             </div>
             <div className="ViewVideo_items">
               <div className="ViewVideo_dp">
-                <i class="fas fa-user-astronaut"></i>
-                <span>Tanmay Bhat</span>
+                <i className="fas fa-user-astronaut"></i>
+                <span>{this.state.author?.name}</span>
               </div>
-              <div className="ViewVideo_subscribe">
-                <button>Subscribe</button>
+              <div className='ViewVideo_subscribe'>
+                <button onClick={subscribeCreator} className={`${this.state.subscribed?'subscribed':'notsubscribed'}`}>{this.state.subscribed?'Subscribed':'Subscribe'}</button>
               </div>
             </div>
           </div>
           <div className="ViewVideo_description">
-          PUBG: NEW STATE, is a new Battle Royale developed by PUBG STUDIOS, the company <br />
-                    behind PLAYERUNKNOWN'S BATTLEGROUNDS (PUBG). <br />
-
-                    In PUBG: NEW STATE, 100 players will fight on a new battleground with various weapons and               <br />
-                    strategies until only one party remains. Utilize gear, vehicles, and consumables to survive the                 <br />
-                    shrinking battleground to become the last Survivor standing! Find out more about the game               <br />
-                    here: https://newstate.pubg.com                 <br />
-                    <br />
-                    Download the game now: https://pubgnewstate.onelink.me/7alc/...                 <br />
-                    <br />
-                    Song Credits - Bad Boy x Bad Girl by Badshah ft. Nikhita Gandhi
-                    <br />
-                    PUBG: NEW STATE Social Media Handles:               <br />
-                    Facebook - https://www.facebook.com/OfficialPUBG...                 <br />
-                    Instagram - https://www.instagram.com/pubgnewstat...                <br />
-                    YouTube - https://www.youtube.com/channel/UCnEa...              <br />
-                    Twitter - https://twitter.com/PUBG_NEWSTATE                 <br />
-                    <br />
-                    <br />
-                    Check out my second channel: https://www.youtube.com/honestlybytan...               <br />
-                    <br />
-                    Follow me on Instagram: https://instagram.com/tanmaybhat                <br />
-                    Follow me on my Discord: https://discordapp.com/invite/6Jf4de9              <br />
-                    Submit your memes on Reddit: https://www.reddit.com/r/TanmayBhatKe...               <br />
-                    <br />
-                    Become a member for exclusive content and privileges: https://www.youtube.com/channel/UC0rE...              <br />
-                    <br />
-                    Channel Manager: Revant Talekar | https://www.instagram.com/revanttalekar/              <br />
-                    <br />
-                    My videos use Epidemic sounds. Visit this link for a 30 day free trial: http://share.epidemicsound.com/38jcPQ               <br />
-                    <br />
-                    Click here to live my life: https://amazon.in/shop/tanmaybhat               <br />
-                    <br />
-                    #NewStateTime #PUBGNEWSTATE #NextGenBattleRoyale                <br />
+            {this.props.currentVideo.description}
           </div>
         </div>
         <div className="ViewVideo_rigth">
@@ -130,13 +169,24 @@ class ViewVideoPage extends React.Component {
             <div style={{ marginBottom: "0.5em", fontSize: "1.5em" }}>
               Comments
             </div>
-            <div className="chat">
-              <i class="far fa-user-circle"></i>&nbsp;
-              <span>Ankit Rastogi</span>&nbsp;:&nbsp;
-              <span>
-                how it would be looking on airport samaya saying bhuvan bhai
-                nange aayen hain
-              </span>
+            <div style={{flex:1}}>
+            {
+              this.state.comments && this.state.comments.map((c,k)=>(
+                <div key={k} className="chat">
+                          <i className="far fa-user-circle"></i>&nbsp;
+                          <span>{`${c.name}`}</span>&nbsp;:&nbsp;
+                          <span>{`${c.content}`}</span>
+                        </div>
+              ))
+            }
+            </div>
+            <div className='ViewVideo_commentInput'>
+              <input 
+                value={this.state.comment} 
+                onInput={(event)=>this.setState({comment:event.target.value})} 
+                style={{flex:1}} type="text"
+                placeholder='Enter Comment here...' />
+              <button onClick={commentOnVideo}>comment</button>
             </div>
           </div>
           <div className="liveStreamCreator_nextVideos">

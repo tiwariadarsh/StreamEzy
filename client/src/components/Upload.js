@@ -5,6 +5,9 @@ import loader from '../assets/loader.gif'
 import { MDBBtn } from "mdbreact";
 import abi from '../contracts/playlist.json'
 import { ethers } from "ethers";
+
+import { doc, setDoc } from "firebase/firestore"; 
+import {db} from '../firebase'
 /*
 The code below connects to Infura IPFS node via 'ipfs-http-client' library
 */
@@ -150,7 +153,12 @@ class Upload extends React.Component {
       console.log(videoUpload.cid.toString(),thumbnailUpload.cid.toString());
       this.setState({thumbnailHash:thumbnailUpload.cid.toString()})
       this.setState({videoHash:videoUpload.cid.toString()})
+      const id = await rpc(contract.methods.getArrayLength());
       createRawTransaction(this.state.videoTitle, this.state.thumbnailHash, this.state.videoHash, this.state.categories, this.state.description);    
+      await setDoc(doc(db, "videos", id.toString()), {
+        id:id,
+        likes:0
+      });
     }
   }
 

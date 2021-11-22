@@ -26,7 +26,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io
 const contractAddress = '0xf99b3AE3812c4014D782aF501Aa4dbA0005889Ea';
 
 const contract = new web3.eth.Contract(playlist, contractAddress); 
-console.log(contract)
+// console.log(contract)
 //*******************************************************
 
 
@@ -54,8 +54,7 @@ class Home extends Component {
       super();
       this.state = {
         route: 'home', // handles and captures routing state. Begin at sign in form
-        videoLink: '', // used to pass IPFS video link to 'View' component
-        videoId:'',
+        videoLink: '',
         currentVideo:null
       }
    }
@@ -63,9 +62,8 @@ class Home extends Component {
   onRouteChange = (route) => {
     this.setState({route: route});
   }
-  onVideoView = (videoLink,id,obj) => {
+  onVideoView = (videoLink,obj) => {
     this.setState({videoLink: videoLink});
-    this.setState({videoId:id})
     this.setState({currentVideo:obj})
   }
   componentDidMount() {
@@ -83,11 +81,11 @@ class Home extends Component {
     var stringex;
     var length = await rpc(contract.methods.getArrayLength()); // get number of videos uploaded to website
     result = await rpc(contract.methods.getVideos()); 
-    console.log(result);
-    console.log(length);
+    // console.log(result);
+    // console.log(length);
     for (var i = 0; i < length; i++) {
       result = await rpc(contract.methods.getVideo(i)); 
-      console.log(result);// contract function returns a string containing video title, thumbnail hash, and video hash
+      // console.log(result);// contract function returns a string containing video title, thumbnail hash, and video hash
       // result = result.split("/");
       videoTitle = result.title;
       thumbnailHash = result.thumbnailHash;
@@ -95,7 +93,7 @@ class Home extends Component {
       stringex = "https://ipfs.io/ipfs/"
       thumbnailLink = stringex.concat(thumbnailHash); // construct link to thumbnail that users can navigate to
       videoLink = stringex.concat(videoHash); // construct link to video that users can navigate to
-      console.log(videoLink,thumbnailLink);
+      // console.log(videoLink,thumbnailLink);
       videos.push(
         <VideoCard 
           key={i}
@@ -104,7 +102,6 @@ class Home extends Component {
           imglink={thumbnailLink} 
           title={videoTitle} 
           videoLink={videoLink}
-          videoId={i}
           videoObj={result}
         /> );
     }
@@ -127,7 +124,7 @@ class Home extends Component {
             </div>
           }
         </div>
-        :<ViewVideoPage onRouteChange={this.onRouteChange} currentVideo={this.state.currentVideo} videoLink={this.state.videoLink} videoId={this.state.videoId}/>
+        :<ViewVideoPage onRouteChange={this.onRouteChange} currentVideo={this.state.currentVideo} videoLink={this.state.videoLink}/>
       }
       </>
     );
