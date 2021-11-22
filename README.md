@@ -6,7 +6,7 @@
 <h1 align="center"> <p style="font-size:200px;"> <b> StreamEzy </b> </p> </h1> 
 
 <h4 align="center"> 🖥️ Decentralized Live Video Streaming Platform 🎞️</h4> 
-<h3 align="center"><a href='https://streamzy-development.web.app/'>https://streamzy-development.web.app/</a></h3>
+<h3 align="center"><a href='https://streamzy-development.web.app/' target='_blank'>https://streamzy-development.web.app/</a></h3>
 
 ## 🤖 About
 
