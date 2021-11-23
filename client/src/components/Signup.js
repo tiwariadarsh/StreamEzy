@@ -138,7 +138,7 @@ class SignUp extends Component {
                   window.alert('okay')
                   console.log(this.props.web3)
                     let hash = await AuthenticationHash(email, this.props.account, password,  this.props.web3);
-                     
+                     console.log(this.props.account);
                     await contract.methods.register(hash).send({ from: this.props.account });
                     window.alert("Signup successful")
 
