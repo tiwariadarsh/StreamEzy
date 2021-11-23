@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "streamzy-ae511.appspot.com",
   messagingSenderId: "525147906795",
   appId: "1:525147906795:web:f600fb662f0fa577bd54ae",
-  measurementId: "G-NMYF2NJQ3E"
+  measurementId: "G-NMYF2NJQ3E",
 };
 
 // Initialize Firebase
@@ -23,4 +23,4 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
 
-export {app,db,analytics};
+export { app, db, analytics };

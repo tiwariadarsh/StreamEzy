@@ -76,7 +76,7 @@ export default function UserProfile() {
                 <img
                   src="https://img.icons8.com/bubbles/150/000000/user.png"
                   className="img-radius"
-                  alt="User-Profile-Image"
+                  alt="User-Profile-Avatar"
                 />{" "}
               </div>
               <h6 className="f-w-600">{displayname} </h6>
