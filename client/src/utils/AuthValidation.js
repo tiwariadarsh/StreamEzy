@@ -1,13 +1,13 @@
 import SignData from './SignData';
 
-const AuthValidation = async (name,email, accountAddress, password,  web3, contract) => {
+const AuthValidation = async (email, accountAddress, password,  web3, contract) => {
 
     let userAddress = await contract.methods.getUserAddress().call({ from: accountAddress });
 
     if (userAddress.toLowerCase() !== accountAddress.toLowerCase()) {
         return false;
     } else {
-        let signedData = await SignData(name, accountAddress, web3);
+        let signedData = await SignData(email, accountAddress, web3);
         let passwordDigiCodeHash = await web3.eth.accounts.hashMessage(password + email);
 
         let hash = await web3.eth.accounts.hashMessage(signedData + passwordDigiCodeHash);

@@ -12,7 +12,11 @@
     "animate.css": "^4.1.1",
     "axios": "^0.22.0",
     "bootstrap": "^5.1.1",
+<<<<<<< HEAD
     "compressorjs": "^1.1.1",
+=======
+    "ethereumjs-tx": "^2.1.2",
+>>>>>>> 18258a08e35ac7a782108a58dc545d8b50a97a77
     "ethers": "^5.4.7",
     "ffmpeg": "0.0.4",
     "firebase": "^9.5.0",
@@ -36,6 +40,7 @@
     "react-spring": "^9.3.1",
     "react-tagsinput": "^3.19.0",
     "react-toastify": "^8.1.0",
+    "reactjs-popup": "^2.0.5",
     "semantic-ui-react": "^2.0.4",
     "styled-components": "^5.3.3",
     "tachyons": "^4.12.0",
