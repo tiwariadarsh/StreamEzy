@@ -19,6 +19,7 @@ import web3Connection from './web3Connection';
 
 import Contract from './Contract';
 import background from './assets/bg3.jpg';
+import MetamaskFail from './components/MetamaskFail';
 
 
 
@@ -101,7 +102,7 @@ class App extends Component {
     }
 
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return <MetamaskFail/>
     }
 
     const  routes = ( )=> {
