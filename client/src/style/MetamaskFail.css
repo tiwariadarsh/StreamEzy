@@ -14,10 +14,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .metamaskfail h1{
     text-align: center;
     font-weight: bold;
     color: darkred;
+}
+
+.metamaskfail p{
+    width: 60%;
+    margin-top: 2rem;
+    text-align: center;
 }

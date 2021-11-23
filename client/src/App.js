@@ -49,12 +49,8 @@ class App extends Component {
 
       this.setState({ web3, contract, account: accounts[0] }, this.start);
     } catch (error) {
-      alert(
-        `Failed to load web3`,
-      );
       console.error(error);
     }
-
     await this.getAccount();
   };
 
