@@ -4,9 +4,9 @@ import HoverVideoPlayer from 'react-hover-video-player';
 //import video from '../assets/sample.mp4'
 
 export default function VideoCard(prop) {
-    console.log(prop.videoObj);
+    // console.log(prop.videoObj);
     return (
-        <div onClick={() => { prop.onRouteChange('view'); prop.onVideoView(prop.videoLink,prop.videoId,prop.videoObj)}}  className='videocard'>
+        <div onClick={() => { prop.onRouteChange('view'); prop.onVideoView(prop.videoLink,prop.videoObj)}}  className='videocard'>
             <HoverVideoPlayer
                 style={{
                     width:"100%",

@@ -72,13 +72,7 @@
 
 .ViewVideo_items button{
     padding: 0.5em 1em;
-    background-color: white;
     border: rgba(0, 0, 0, 0.5) 1px solid;
-}
-
-.ViewVideo_items button:hover{
-    background-color: tomato;
-    color: white;
 }
 
 .ViewVideo_All_Button{
@@ -111,10 +105,14 @@
     height: 60vh;
     overflow: auto;
     background-color: rgba(71, 69, 69, 0.068);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .chat{
     margin-bottom: 0.5em;
+    flex: 1;
 }
 
 .chat i{
@@ -135,4 +133,19 @@
     top: 4.4rem;
     right: 2.2rem;
     margin-top: 1rem;
+}
+
+.subscribed{
+    background-color: rgb(255, 22, 14);
+    color: white;
+}
+
+.notsubscribed{
+    background-color: white;
+}
+
+.ViewVideo_commentInput{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
