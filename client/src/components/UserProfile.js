@@ -4,6 +4,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import VideoCard from "./VideoCard";
 
 export default function UserProfile() {
   const [address, setaddress] = useState("address");
@@ -57,9 +58,9 @@ export default function UserProfile() {
 
   return (
     <div
-      className="col-xl-6 col-md-12"
+      className="col-xl-8 col-md-12"
       style={{
-        marginLeft: "27rem",
+        marginLeft: "19rem",
         marginTop: "11rem",
         boxSizing: "border-box",
       }}
@@ -71,7 +72,7 @@ export default function UserProfile() {
               <div className="m-b-25">
                 {" "}
                 <img
-                  src="https://img.icons8.com/bubbles/150/000000/user.png"
+                  src="https://img.icons8.com/bubbles/200/000000/user.png"
                   className="img-radius"
                   alt="User-Profile-Avatar"
                 />{" "}
@@ -81,6 +82,7 @@ export default function UserProfile() {
                 trigger={<i className="far fa-edit m-t-10 f-16"></i>}
                 // modal
                 position="right center"
+                closeOnDocumentClick
               >
                 <form className="popup-form">
                   <h5>
@@ -144,8 +146,20 @@ export default function UserProfile() {
                   <h6 className="text-muted f-w-400">{displaysubscribe}</h6>
                 </div>
                 <div className="col-sm-6">
-                  <p className="m-b-10 f-w-600">Videos</p>
-                  <h6 className="text-muted f-w-400">will upload soon</h6>
+                  <p className="m-b-10 f-w-600">Your Videos</p>
+
+                  <Popup
+                    trigger={<h6 className="text-muted f-w-400">click here</h6>}
+                    modal
+                    // position="top left"
+                  >
+                    <div className="video-popup">
+                      <VideoCard imglink="https://img.youtube.com/vi/uxzv4pRcuKo/0.jpg?resize=153%2C153" title="Top song 2021" />
+                      <VideoCard imglink="https://i.ytimg.com/vi/5XtALoenlec/maxresdefault.jpg" title="BGMI Streaming" />
+                      <VideoCard imglink="https://www.enwallpaper.com/wp-content/uploads/2021/03/05f0e7541baf6a834905242c1a7aea34.jpg" title="Spiderman Trailer" />
+                      <VideoCard imglink="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg" title="Tajmahal Tour, Agra" />
+                    </div>
+                  </Popup>
                 </div>
               </div>
               <ul className="social-link list-unstyled m-t-40 m-b-10">
