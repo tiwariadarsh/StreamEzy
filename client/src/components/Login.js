@@ -3,7 +3,68 @@ import React, { Component } from 'react';
 import AuthValidation from '../utils/AuthValidation';
 
 import "../style/Loginpage.css";
-
+const abi = [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "getSignatureHash",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getUserAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nbOfUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_hash",
+          "type": "string"
+        }
+      ],
+      "name": "register",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+  
+const contractAddress = '0xaD83004229C3807D99554955dA35cA100D1e600E';
+var contract;
 
 class Login extends Component {
     state = {
@@ -13,19 +74,6 @@ class Login extends Component {
         status: '',
         loggedIn: false,
     }
-
-
-// export default function Login() {
-// 	const [email, setemail] = useState('')
-// 	const [password, setpassword] = useState('')
-
-
-	// const login = async (event) => {
-	// 	event.preventDefault()
-		
-	// }
-
-
 
 	onSignIn = async (event) => {
 		event.preventDefault()
@@ -47,19 +95,9 @@ class Login extends Component {
                     digicode: '',
                 });
                 return;
-            } else {
-
-            } 
-			// if (digicode.length !== 6) {
-            //     this.setState({
-            //         alertMessage: "6 digit required for digicode",
-            //         status: 'failed',
-            //         digicode: ''
-            //     });
-            //     return
-            // } 
+            }
 			
-                let userAddress = await this.props.contract.methods.getUserAddress()
+                let userAddress = await contract.methods.getUserAddress()
                     .call({ from: this.props.account });
 
                 if (userAddress === '0x0000000000000000000000000000000000000000') {
@@ -79,7 +117,7 @@ class Login extends Component {
                             this.props.account,
                             password, 
                             this.props.web3,
-                            this.props.contract
+                            contract
                         );
 
                     if (!validated) {
@@ -121,7 +159,10 @@ class Login extends Component {
         
         })
     }
-
+    componentDidMount(){
+        contract = new this.props.web3.eth.Contract(abi, contractAddress);
+        console.log(contract);
+    }
 
 
   render() {

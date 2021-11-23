@@ -3,6 +3,69 @@ import React, { Component } from 'react';
 import AuthenticationHash from '../utils/AuthenticationHash';
 import "../style/Loginpage.css";
 
+const abi = [
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "getSignatureHash",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getUserAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "nbOfUsers",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_hash",
+        "type": "string"
+      }
+    ],
+    "name": "register",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
+
+const contractAddress = '0xaD83004229C3807D99554955dA35cA100D1e600E';
+var contract;
+
 class SignUp extends Component {
   
     constructor(props) {
@@ -18,7 +81,6 @@ class SignUp extends Component {
         signedUp: false
       }
     }
-    
 
     onSignUp = async (event) => {
       event.preventDefault()
@@ -28,10 +90,6 @@ class SignUp extends Component {
       console.log(this.state.email)
       if(this.state.password!==this.state.confirmPassword || this.state.name === '' || this.state.email === '' || this.state.password === '' || this.state.confirmPassword === ''){
         window.alert('Enter Valid Details!')
-        // setname('')
-        // setpassword('')
-        // setemail('')
-        // setconfirmPassword('')
         this.setState({
           // alertMessage: "Error!",
           status: 'failed',
@@ -61,15 +119,7 @@ class SignUp extends Component {
                 return;
             } else {
             }
-            // } if (digicode.length !== 6) {
-            //     this.setState({
-            //         alertMessage: "6 digit required for digicode",
-            //         status: 'failed',
-            //         digicode: ''
-            //     });
-            //     return
-            // } else {
-                let userAddress = await this.props.contract.methods.getUserAddress()
+                let userAddress = await contract.methods.getUserAddress()
                     .call({ from: this.props.account });
                  console.log(userAddress)
                 if (userAddress !== '0x0000000000000000000000000000000000000000') {
@@ -89,7 +139,7 @@ class SignUp extends Component {
                   console.log(this.props.web3)
                     let hash = await AuthenticationHash(email, this.props.account, password,  this.props.web3);
                      
-                    await this.props.contract.methods.register(hash).send({ from: this.props.account });
+                    await contract.methods.register(hash).send({ from: this.props.account });
                     window.alert("Signup successful")
 
                     this.setState({
@@ -101,16 +151,19 @@ class SignUp extends Component {
                      
                         signedUp: true
                     });
-
                     this.props.accountCreated(this.state.signedUp);
                     return;
                 }
             }
-      
+    }
 
+    componentDidMount(){
+      contract = new this.props.web3.eth.Contract(abi, contractAddress);
+      console.log(contract);
     }
   
 render(){
+  console.log(this.props);
     return (
       <div className="login-body">
         <div className="login">
