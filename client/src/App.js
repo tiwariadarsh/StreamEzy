@@ -19,6 +19,7 @@ import web3Connection from './web3Connection';
 
 import Contract from './Contract';
 import background from './assets/bg3.jpg';
+import MetamaskFail from './components/MetamaskFail';
 
 
 
@@ -41,20 +42,20 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    // try {
-    //   const web3 = await web3Connection();
-    //   const contract = await Contract(web3);
-    //   const accounts = await web3.eth.getAccounts();
+    try {
+      const web3 = await web3Connection();
+      const contract = await Contract(web3);
+      const accounts = await web3.eth.getAccounts();
 
-    //   this.setState({ web3, contract, account: accounts[0] }, this.start);
-    // } catch (error) {
-    //   alert(
-    //     `Failed to load web3`,
-    //   );
-    //   console.error(error);
-    // }
+      this.setState({ web3, contract, account: accounts[0] }, this.start);
+    } catch (error) {
+      alert(
+        `Failed to load web3`,
+      );
+      console.error(error);
+    }
 
-    // await this.getAccount();
+    await this.getAccount();
   };
 
   start = async () => {
@@ -100,9 +101,9 @@ class App extends Component {
       this.setState({route})
     }
 
-    // if (!this.state.web3) {
-    //   return <div>Loading Web3, accounts, and contract...</div>;
-    // }
+    if (!this.state.web3) {
+      return <MetamaskFail/>
+    }
 
     const  routes = ( )=> {
       switch(this.state.route) {
@@ -116,7 +117,12 @@ class App extends Component {
           return <GoLive routeChange={routeChange} />
           break;
         case "/login":
-          return <Login routeChange={routeChange} />
+          return <Login
+            account={this.state.account}
+            web3={this.state.web3}
+            routeChange={routeChange} 
+            userSignedIn={this.userSignedIn} 
+            routeChange={routeChange} />
           break;
         case "/signup":
           return <Signup 
