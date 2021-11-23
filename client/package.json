@@ -12,11 +12,8 @@
     "animate.css": "^4.1.1",
     "axios": "^0.22.0",
     "bootstrap": "^5.1.1",
-<<<<<<< HEAD
     "compressorjs": "^1.1.1",
-=======
     "ethereumjs-tx": "^2.1.2",
->>>>>>> 18258a08e35ac7a782108a58dc545d8b50a97a77
     "ethers": "^5.4.7",
     "ffmpeg": "0.0.4",
     "firebase": "^9.5.0",
