@@ -8,6 +8,8 @@ import category from "../assets/category.svg";
 import tag from "../assets/tags.svg";
 import title from "../assets/title.svg";
 import loader from "../assets/loader.gif";
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from "../firebase";
 
 // import ReactPlayer from 'react-player';
 
@@ -22,7 +24,7 @@ export default function Viewpage({ routeChange }) {
   const [streamCreated, setstreamCreated] = useState(false);
   const [divActive, setdivActive] = useState("one");
 
-  const createStream = (apiKey, stream_name) => {
+  const createStream = async (apiKey, stream_name) => {
     document.querySelector(".loader").style.display = "flex";
     // POST request using axios with set headers
     const params = JSON.stringify({
@@ -58,6 +60,16 @@ export default function Viewpage({ routeChange }) {
     axios
       .post("https://livepeer.com/api/stream", params, { headers })
       .then((response) => {
+        console.log(response);
+        //todo : replace address of current user 
+        setDoc(doc(db, "videos", response.data.id), {
+          stream:{
+            streamName:streamName,
+            streamCategory:streamCategory,
+            streamTags:streamTags,
+            streamDescription:streamDescription
+          }
+        }).then(x=>console.log(x));
         document.querySelector(".loader").style.display = "none";
         console.log(response.data);
         setStreamData(response.data);

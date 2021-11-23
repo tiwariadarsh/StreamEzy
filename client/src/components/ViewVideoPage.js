@@ -11,6 +11,7 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import ReactPlayer from 'react-player';
 
 class ViewVideoPage extends React.Component {
   constructor(props) {
@@ -28,6 +29,11 @@ class ViewVideoPage extends React.Component {
   }
 
   async componentDidMount() {
+    if(this.props.currentVideo.kind==='stream'){
+      this.setState({title:this.props.currentVideo.name})
+    }else{
+      this.setState({title:this.props.currentVideo.title})
+    }
     const userref = doc(
       db,
       "users",
@@ -35,7 +41,7 @@ class ViewVideoPage extends React.Component {
     );
     const userdata = await getDoc(userref);
     // console.log(this.state.liked);
-    if (userdata.data()["likedVideos"]?.includes(this.props.videoId)) {
+    if (userdata.data()["likedVideos"]?.includes(this.props.currentVideo.id)) {
       this.setState({ liked: true });
     } else {
       this.setState({ liked: false });
@@ -55,13 +61,13 @@ class ViewVideoPage extends React.Component {
       this.setState({ author: authorData.data() });
     });
 
-    // TODO : this.props.currentVideo.id
-    const videoRef = doc(db, "videos", "5");
+    // TODO : this.props.currentVideo.id OR this.props.currentVideo.id for live
+    const videoRef = doc(db, "videos", this.props.currentVideo.id);
     onSnapshot(videoRef, (videoData) => {
       // console.log(authorData.data());
+      this.setState({liveDescription: videoData.data().stream.streamDescription })
       this.setState({ comments: videoData.data().comments });
       this.setState({ likes: videoData.data().likes });
-      console.log(this.state.likes);
     });
   }
 
@@ -74,7 +80,7 @@ class ViewVideoPage extends React.Component {
         "users",
         JSON.parse(window.localStorage.getItem("currentuser"))["address"]
       );
-      const videoRef = doc(db, "videos", "5");
+      const videoRef = doc(db, "videos", this.props.currentVideo.id);
       const userdata = await getDoc(userref);
       if (
         userdata.data()["likedVideos"]?.includes(this.props.currentVideo.id)
@@ -129,7 +135,7 @@ class ViewVideoPage extends React.Component {
       }
       try {
         // TODO : this.props.currentVideo.id
-        const videoRef = doc(db, "videos", "5");
+        const videoRef = doc(db, "videos", this.props.currentVideo.id);
         await updateDoc(videoRef, {
           comments: arrayUnion({
             userId: JSON.parse(window.localStorage.getItem("currentuser"))[
@@ -167,16 +173,23 @@ class ViewVideoPage extends React.Component {
         <div className="ViewVideo">
           <div className="ViewVideo_left">
             <div className="ViewVideo_video">
-              <video
-                controlsList="nodownload"
-                className="ViewVideo_videoPlayer"
-                src={this.state.videoLink}
-                controls
-              />
+              {this.props.currentVideo.kind==='stream'
+                ?<ReactPlayer
+                  url={this.state.videoLink}
+                  controls
+                />
+                :<video
+                  controlsList="nodownload"
+                  className="ViewVideo_videoPlayer"
+                  src={this.state.videoLink}
+                  controls
+                />
+              }
+              
             </div>
             <div className="ViewVideo_dashboard">
               <div className="ViewVideo_title">
-                {this.props.currentVideo.title}
+                {this.state.title}
               </div>
               <div className="ViewVideo_icons">
                 <div className="liveStreamCreator_like" onClick={likeVideo}>
@@ -212,13 +225,13 @@ class ViewVideoPage extends React.Component {
               </div>
             </div>
             <div className="ViewVideo_description">
-              {this.props.currentVideo.description}
+              {this.props.currentVideo.kind==='stream'?this.state.liveDescription:this.props.currentVideo.description}
             </div>
           </div>
           <div className="ViewVideo_rigth">
             <div className="ViewVideo_chats">
               <div style={{ marginBottom: "0.5em", fontSize: "1.5em" }}>
-                Comments
+                {this.props.currentVideo.kind==='stream'?'Live Chat':"Comments"}
               </div>
               <div style={{ flex: 1 }}>
                 {this.state.comments &&
@@ -238,7 +251,7 @@ class ViewVideoPage extends React.Component {
                   }
                   style={{ flex: 1 }}
                   type="text"
-                  placeholder="Enter Comment here..."
+                  placeholder="Enter . . . ."
                 />
                 <button onClick={commentOnVideo}>comment</button>
               </div>

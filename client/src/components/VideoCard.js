@@ -41,8 +41,15 @@ export default function VideoCard(prop) {
           </div>
         }
       />
-      <div style={{ height: "20%", backgroundColor: "white" }}>
-        {prop.title}
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+        <div style={{ height: "20%", backgroundColor: "white" }}>
+          {prop.title}
+        </div>
+        {prop.stream&&<div style={{
+            width: "15px",
+            background: "red",
+            height: "15px",
+            borderRadius: "100%"}}></div>}
       </div>
     </div>
   );

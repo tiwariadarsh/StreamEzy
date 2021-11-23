@@ -4,6 +4,7 @@ import "../style/Home.css";
 import ViewVideoPage from "./ViewVideoPage";
 import loader from "../assets/loader.gif";
 import playlist from "../contracts/playlist.json";
+import axios from "axios";
 
 //*******************************************************
 // NOTES:
@@ -48,7 +49,7 @@ class Home extends Component {
     this.state = {
       route: "home", // handles and captures routing state. Begin at sign in form
       videoLink: "",
-      currentVideo: null,
+      currentVideo: null
     };
   }
 
@@ -61,6 +62,7 @@ class Home extends Component {
   };
   componentDidMount() {
     this.createVideos(); // retrieve video thumbnails and titles after DOM has rendered
+    this.getStreams()
   }
 
   createVideos = async () => {
@@ -104,11 +106,48 @@ class Home extends Component {
     });
   };
 
+  getStreams = () => {
+      // /api/stream?streamsonly=1&filters=[{"id": "isActive", "value": true}]  //for active streamssss
+      const apiKey = 'ced26452-f2bd-4173-a0bc-93b4c19628c0'
+      const headers = {
+        "content-type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      };
+      axios
+      .get(`https://livepeer.com/api/stream?streamsonly=1`, { headers })
+      .then(result=>{
+        console.log(result.data);
+          var streams = [];
+          if(result.data.length>0){
+            for(var i=0; i<result.data.length; i++){
+              const videoLink = `https://cdn.livepeer.com/hls/${result.data[i].playbackId}/index.m3u8`
+              streams.push(
+                <VideoCard
+                key={i}
+                onRouteChange={this.onRouteChange}
+                onVideoView={this.onVideoView}
+                imglink={'https://thumbs.dreamstime.com/b/live-stream-sign-red-symbol-button-streaming-broadcasting-online-emblem-tv-shows-social-media-performances-181782944.jpg'}
+                title={result.data[i].name}
+                videoLink={videoLink}
+                videoObj={result.data[i]}
+                stream={true}
+              />
+              )
+            }
+            this.setState({ourStreams:streams})
+          }
+        }
+      )
+  }
+
   render() {
     return (
       <>
         {this.state.route !== "view" ? (
           <div className="home">
+            {
+              this.state.ourStreams && this.state.ourStreams
+            }
             {this.state.Videos ? (
               this.state.Videos
             ) : (

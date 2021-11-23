@@ -182,6 +182,7 @@ class Upload extends React.Component {
       await setDoc(doc(db, "videos", id.toString()), {
         id: id,
         likes: 0,
+        
       });
     }
   };
