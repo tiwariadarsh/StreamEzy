@@ -1,6 +1,6 @@
 import './App.css';
 import Formate from './utils/Formate';
-import { BrowserRouter, Switch, Router,Route, Link, Redirect } from 'react-router-dom';
+//import { BrowserRouter, Switch, Router,Route, Link, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Signup from './components/Signup';
@@ -11,9 +11,9 @@ import GoLive from './components/GoLive';
 import UserProfile from './components/UserProfile';
 import Upload from './components/Upload';
 import LiveStreamCreator from './components/LiveStreamCreator';
-import LiveStreamViewer from './components/LiveStreamViewer';
+//import LiveStreamViewer from './components/LiveStreamViewer';
 import Test from './components/Test';
-import ViewVideoPage from './components/ViewVideoPage';
+//import ViewVideoPage from './components/ViewVideoPage';
 import React, { Component } from "react";
 import web3Connection from './web3Connection';
 
