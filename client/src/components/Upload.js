@@ -3,6 +3,8 @@ import "../style/Upload.css";
 //import { MDBBtn } from "mdbreact";
 import { create } from 'ipfs-http-client';
 import loader from '../assets/loader.gif' 
+import Compressor from 'compressorjs';
+
 
 
 const client = create('https://ipfs.infura.io:5001/api/v0')
@@ -29,6 +31,8 @@ export default function Upload()
   //   }  
   const [videoData, setvideoData] = useState(null)
   const [thumbnailData, setthumbnailData] = useState(null)
+  const [compressedVideo, setcompressedVideo] = useState(null)
+  const [videoToCompress, setvideoToCompress] = useState(null)
   
   //Get video
   const captureFile = (event,type) => {
@@ -39,6 +43,7 @@ export default function Upload()
     reader.onloadend = () =>{
       if(type==='video'){
         setvideoData(reader.result)
+        setvideoToCompress(file)
       }else if(type==='thumb'){
         setthumbnailData(reader.result)
       }
@@ -58,10 +63,27 @@ export default function Upload()
     var time2 = new Date();
     console.log(time2-time1);
     console.log(time2.getTime()-time1.getTime());
+
+    new Compressor(videoToCompress, {
+      quality: 0.1,
+    
+      // The compression process is asynchronous,
+      // which means you have to access the `result` in the `success` hook function.
+      success(result) {
+        const formData = new FormData();
+        setcompressedVideo(result)
+        console.log(result);
+      },
+      error(err) {
+        console.log(err.message);
+      },
+    });
+
   }
   
   return (
       <div className="upload">
+      <video src={compressedVideo}></video>
         <div className='loaderUpload'>
           <img src={loader}/>
         </div>

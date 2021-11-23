@@ -42,9 +42,6 @@ export default function UserProfile() {
         name:name,
         dob:dob,
         bio:bio,
-        comments:[],
-        likedVideos:[],
-        subscribers:[],
         address:address
       });
       setdob('')
