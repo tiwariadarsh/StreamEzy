@@ -19,6 +19,7 @@ import web3Connection from './web3Connection';
 
 import Contract from './Contract';
 import background from './assets/bg3.jpg';
+import MetamaskFail from './components/MetamaskFail';
 
 
 
@@ -60,9 +61,9 @@ class App extends Component {
   start = async () => {
     await this.getAccount();
     const { web3, contract , account } = this.state;
-    // console.log("web3 =", web3);
-    // console.log("Contract =", contract);
-    // console.log("Acoount =", account);
+    console.log("web3 =", web3);
+    console.log("Contract =", contract);
+    console.log("Acoount =", account);
   };
 
   getAccount = async () => {
@@ -101,7 +102,7 @@ class App extends Component {
     }
 
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return <MetamaskFail/>
     }
 
     const  routes = ( )=> {

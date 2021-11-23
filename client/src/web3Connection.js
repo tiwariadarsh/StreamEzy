@@ -2,11 +2,12 @@ import Web3 from 'web3';
 
 const web3Connection = async () => {
     let web3;
-    typeof window.ethereum !== 'undefined' ?
-        web3 = new Web3(window.ethereum) :
-        typeof window.web3 !== 'undefined' ?
-            web3 = window.web3 :
-            web3 = new Web3('http://localhost:8545');
+    if(window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        console.log(account);
+        web3 = new Web3(window.ethereum)
+    }
 
     return web3;
 }
