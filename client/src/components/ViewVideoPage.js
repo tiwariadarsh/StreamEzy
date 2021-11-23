@@ -117,6 +117,11 @@ class ViewVideoPage extends React.Component {
       }
     }
 
+    const clickToCopy = (e) => {
+      navigator.clipboard.writeText(e);
+      alert('copied!')
+    }
+
     // console.log(this.state.author);
     const { onRouteChange } = this.props;
     return (
@@ -147,7 +152,7 @@ class ViewVideoPage extends React.Component {
                 {/* {this.state.likes} */}
               </div>
               <div className="ViewVideo_share">
-                <i className="fas fa-share"></i>
+                <i class="fas fa-share" onClick={()=>clickToCopy(this.state.videoLink)}></i>
               </div>
             </div>
             <div className="ViewVideo_items">
