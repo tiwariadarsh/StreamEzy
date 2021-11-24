@@ -185,6 +185,9 @@ class Upload extends React.Component {
         
       });
     }
+    window.alert("Video Uploaded!");
+    this.setState({ videoTitle:"" });
+    this.setState({ description: event.target.value });
   };
 
   render() {
