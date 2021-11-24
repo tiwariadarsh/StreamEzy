@@ -32,7 +32,7 @@ export default function VideoCard(prop) {
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
         <div style={{ height: "20%", backgroundColor: "white" }}>
           {prop.title}
-        </div>
+        </div> 
         {prop.stream&&<div style={{
             width: "15px",
             background: "red",
