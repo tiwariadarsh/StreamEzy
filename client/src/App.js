@@ -232,7 +232,7 @@ class App extends Component {
     };
     return (
       <div className="App">
-        {window.innerWidth > 650 ? <Sidebar /> : ""}
+        {window.innerWidth > 650 ? <Sidebar routeChange={routeChange}/> : ""}
         <Navbar routeChange={routeChange} />
         {routes()}
       </div>

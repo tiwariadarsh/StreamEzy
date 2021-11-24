@@ -172,6 +172,7 @@ class SignUp extends Component {
           // email : this.state.email,
 
         })
+        this.props.routeChange(`${this.props.route}`);
         return;
       }
     }
