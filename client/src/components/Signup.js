@@ -154,7 +154,6 @@ class SignUp extends Component {
           .register(hash)
           .send({ from: this.props.account });
         window.alert("Signup successful");
-      
 
         this.setState({
           name: "",
@@ -167,11 +166,10 @@ class SignUp extends Component {
         });
 
         this.props.accountCreated(this.state.signedUp);
-        window.localStorage.setItem("currentuser",{
+        window.localStorage.setItem("currentuser", {
           address: this.props.account,
           // email : this.state.email,
-
-        })
+        });
         this.props.routeChange(`${this.props.route}`);
         return;
       }
@@ -184,7 +182,7 @@ class SignUp extends Component {
   }
 
   render() {
-    console.log(this.state.signedUp)
+    console.log(this.state.signedUp);
     console.log(this.props);
     return (
       <div className="login-body">

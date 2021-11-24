@@ -182,11 +182,10 @@ class Upload extends React.Component {
       await setDoc(doc(db, "videos", id.toString()), {
         id: id,
         likes: 0,
-        
       });
     }
     window.alert("Video Uploaded!");
-    this.setState({ videoTitle:"" });
+    this.setState({ videoTitle: "" });
     this.setState({ description: event.target.value });
     this.props.routeChange(`${this.props.route}`);
   };
