@@ -77,7 +77,7 @@ class Login extends Component {
 
   onSignIn = async (event) => {
     event.preventDefault();
-     
+
     if (this.state.email !== "" && this.state.password !== "") {
       let email = this.state.email.trim();
       let password = this.state.password.trim();
@@ -134,16 +134,14 @@ class Login extends Component {
 
             loggedIn: true,
           });
-       
-        
-          window.localStorage.setItem("currentuser",{
+
+          window.localStorage.setItem("currentuser", {
             address: this.props.account,
             // email : this.state.email,
-
-          })
+          });
 
           this.props.userSignedIn(this.state.loggedIn, usernameToSend);
-         this.props.routeChange(`${this.props.route}`);
+          this.props.routeChange(`${this.props.route}`);
           return;
         }
       }
@@ -210,7 +208,7 @@ class Login extends Component {
                   onInput={(e) => this.setState({ password: e.target.value })}
                 />
 
-                <button onClick={this.onSignIn}  className="butt">
+                <button onClick={this.onSignIn} className="butt">
                   Sign In
                 </button>
               </form>

@@ -39,7 +39,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
- /* margin-bottom: 0.5em;*/
+  /* margin-bottom: 0.5em;*/
   font-size: x-large;
 }
 
@@ -149,4 +149,31 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.content input {
+  height: 3rem;
+  width: 88%;
+  margin: auto;
+  background-color: rgb(218, 233, 192);
+  margin-top: 2rem;
+}
+
+.content button {
+  margin-left: 12px;
+  height: 3rem;
+  width: 4.4rem;
+  /*padding: 0.5em 1em;*/
+  background-color: rgb(40, 103, 175);
+  border: rgba(0, 0, 0, 0.5) 2px solid;
+  border-radius: 8px;
+  color: white;
+}
+
+.content button:hover {
+  background-color: blue;
+}
+
+.content p {
+  margin-bottom: 1rem;
 }

@@ -11,7 +11,8 @@ export default function About({ routeChange }) {
           <div className="who-we-are">
             <h3>Who we are</h3>
             <span>
-              A group of software engineers, intrested in developing cool preojects/websites to help society.
+              A group of software engineers, intrested in developing cool
+              projects/websites to help society.
             </span>
           </div>
           <div className="cards">
@@ -38,7 +39,8 @@ export default function About({ routeChange }) {
                 <p>
                   MERN stack Developer.Expert in implementation of each step of
                   the project. Eager to learn new technologies and
-                  methodologies. Worked on frontend part using React, CSS and JS.
+                  methodologies. Worked on frontend part using React, CSS and
+                  JS.
                 </p>
               </card>
             </div>
@@ -49,7 +51,9 @@ export default function About({ routeChange }) {
                 <h3>Ankit Rastogi</h3>
                 <span>Web developer</span>
                 <p>
-                Worked on Livepeer APIs, backend part of the platform using IPFS, Smart Contracts, Firebase and also contributed on the frontend part in Home Page, Go Live page and Nav Bar
+                  Worked on Livepeer APIs, backend part of the platform using
+                  IPFS, Smart Contracts, Firebase and also contributed on the
+                  frontend part in Home Page, Go Live page and Nav Bar
                 </p>
               </card>
             </div>
@@ -60,8 +64,9 @@ export default function About({ routeChange }) {
                 <h3>Amritanshu</h3>
                 <span>Web developer</span>
                 <p>
-                Worked on frontend part using React, CSS and JS, contributed in the backend part in firebase and project planning. Eager to learn new technologies and
-                  methodologies.
+                  Worked on frontend part using React, CSS and JS, contributed
+                  in the backend part in firebase and project planning. Eager to
+                  learn new technologies and methodologies.
                 </p>
               </card>
             </div>
