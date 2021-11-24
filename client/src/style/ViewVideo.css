@@ -32,14 +32,14 @@
 
 .ViewVideo_title {
   font-size: 1.3em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 .ViewVideo_icons {
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-bottom: 0.5em;
+ /* margin-bottom: 0.5em;*/
   font-size: x-large;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .ViewVideo_description {
-  margin-top: 2em;
+  margin-top: 1em;
   padding-left: 5em;
   font-size: 0.9em;
   letter-spacing: 0.4px;

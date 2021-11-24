@@ -26,10 +26,10 @@ export default function UserProfile() {
       setdisplaysubscribe(docSnap.data().subscribers?.length);
       setdisplaybio(docSnap.data().bio);
       setdisplaydob(docSnap.data().dob);
-      window.localStorage.setItem(
-        "currentuser",
-        JSON.stringify(docSnap.data())
-      );
+      // window.localStorage.setItem(
+      //   "currentuser",
+      //   JSON.stringify(docSnap.data())
+      // );
     } catch (error) {
       alert(error.message);
     }
@@ -55,6 +55,9 @@ export default function UserProfile() {
       alert(error.message);
     }
   };
+
+
+  
 
   return (
     <div

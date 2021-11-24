@@ -90,6 +90,10 @@ class App extends Component {
   };
 
   render() {
+    // console.log(window.localStorage.getItem("currentuser"))
+    console.log(this.state.signedUp)
+    console.log(this.state.loggedIn)
+    
     const routeChange = (route) => {
       this.setState({ route });
     };
@@ -107,7 +111,29 @@ class App extends Component {
           return <About routeChange={routeChange} />;
         // break;
         case "/golive":
+       
+        if(window.localStorage.getItem("currentuser")===null)
+        {
+          // window.alert("Log IN to GoLive on StreamEZY")
+          this.setState({route:"/login"});
+          // return <Home routeChange={routeChange} />;
+          <Login
+              account={this.state.account}
+              web3={this.state.web3}
+              routeChange={routeChange}
+              userSignedIn={this.userSignedIn}
+              routeChange={routeChange}
+            />
+
+           
+
+
+        }
+        else
+        {
           return <GoLive routeChange={routeChange} />;
+        }
+
         //  break;
         case "/login":
           return (
@@ -132,25 +158,67 @@ class App extends Component {
           );
         //  break;
         case "/upload":
-          return <Upload routeChange={routeChange} />;
-        //  break;
-        case "/profile":
-          return (
-            <UserProfile
-              style={{
-                width: "100vw",
-                height: "100vh",
-                backgroundImage: `url(${background})`,
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+          
+        if(window.localStorage.getItem("currentuser")===null)
+        {
+          //  window.alert("Log IN to Upload Videos on StreamEZY")
+          this.setState({route:"/login"});
+          // return <Home routeChange={routeChange} />;
+          <Login
+              account={this.state.account}
+              web3={this.state.web3}
+              routeChange={routeChange}
+              userSignedIn={this.userSignedIn}
               routeChange={routeChange}
             />
-          );
+
+        }
+        else
+        { 
+          
+         
+          return <Upload routeChange={routeChange} />;
+        }
+         
+        //  break;
+        case "/profile":
+          if(window.localStorage.getItem("currentuser")===null)
+          {
+            //  window.alert("Log IN to View your Profile on StreamEZY")
+            this.setState({route:"/login"});
+            // return <Home routeChange={routeChange} />;
+            <Login
+                account={this.state.account}
+                web3={this.state.web3}
+                routeChange={routeChange}
+                userSignedIn={this.userSignedIn}
+                routeChange={routeChange}
+              />
+  
+          }
+          else
+          { 
+            return (
+            
+              <UserProfile
+                style={{
+                  width: "100vw",
+                  height: "100vh",
+                  backgroundImage: `url(${background})`,
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                routeChange={routeChange}
+              />
+            );
+          
+            
+          }
+         
         //  break;
         case "/stream-creator":
           return <LiveStreamCreator routeChange={routeChange} />;
