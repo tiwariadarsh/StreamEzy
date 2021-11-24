@@ -193,3 +193,17 @@ textarea {
 [type="submit"]:hover {
   background: #cc4949;
 }
+
+
+/*videos popup */
+
+.video-popup {
+  /* border: 10px black solid; */
+  /* position: absolute; */
+  /* top: 1rem; */
+  /* left: .3rem; */
+  /* right: 0; */
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
