@@ -11,7 +11,9 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 class ViewVideoPage extends React.Component {
   constructor(props) {
@@ -29,10 +31,10 @@ class ViewVideoPage extends React.Component {
   }
 
   async componentDidMount() {
-    if(this.props.currentVideo.kind==='stream'){
-      this.setState({title:this.props.currentVideo.name})
-    }else{
-      this.setState({title:this.props.currentVideo.title})
+    if (this.props.currentVideo.kind === "stream") {
+      this.setState({ title: this.props.currentVideo.name });
+    } else {
+      this.setState({ title: this.props.currentVideo.title });
     }
     const userref = doc(
       db,
@@ -65,7 +67,9 @@ class ViewVideoPage extends React.Component {
     const videoRef = doc(db, "videos", this.props.currentVideo.id);
     onSnapshot(videoRef, (videoData) => {
       // console.log(authorData.data());
-      this.setState({liveDescription: videoData.data().stream.streamDescription })
+      this.setState({
+        liveDescription: videoData.data().stream.streamDescription,
+      });
       this.setState({ comments: videoData.data().comments });
       this.setState({ likes: videoData.data().likes });
     });
@@ -173,24 +177,19 @@ class ViewVideoPage extends React.Component {
         <div className="ViewVideo">
           <div className="ViewVideo_left">
             <div className="ViewVideo_video">
-              {this.props.currentVideo.kind==='stream'
-                ?<ReactPlayer
-                  url={this.state.videoLink}
-                  controls
-                />
-                :<video
+              {this.props.currentVideo.kind === "stream" ? (
+                <ReactPlayer url={this.state.videoLink} controls />
+              ) : (
+                <video
                   controlsList="nodownload"
                   className="ViewVideo_videoPlayer"
                   src={this.state.videoLink}
                   controls
                 />
-              }
-              
+              )}
             </div>
             <div className="ViewVideo_dashboard">
-              <div className="ViewVideo_title">
-                {this.state.title}
-              </div>
+              <div className="ViewVideo_title">{this.state.title}</div>
               <div className="ViewVideo_icons">
                 <div className="liveStreamCreator_like" onClick={likeVideo}>
                   {this.state.liked ? (
@@ -200,12 +199,34 @@ class ViewVideoPage extends React.Component {
                   )}
                   {/* {this.state.likes} */}
                 </div>
-                <div className="ViewVideo_share">
+                <Popup
+                  className="popup"
+                  trigger={
+                    <div className="ViewVideo_share">
+                      <i
+                        class="fas fa-share"
+                        // onClick={() => clickToCopy(this.state.videoLink)}
+                      ></i>
+                    </div>
+                  }
+                  modal
+                  position="right center"
+                  closeOnDocumentClick
+                >
+                  <div class="content">
+                    <h5>Copy this link to share</h5>
+                    <input type="text" readonly value={this.state.videoLink} />
+                    <button onClick={() => clickToCopy(this.state.videoLink)}>
+                      Copy
+                    </button>
+                  </div>
+                </Popup>
+                {/* <div className="ViewVideo_share">
                   <i
                     class="fas fa-share"
                     onClick={() => clickToCopy(this.state.videoLink)}
                   ></i>
-                </div>
+                </div> */}
               </div>
               <div className="ViewVideo_items">
                 <div className="ViewVideo_dp">
@@ -225,13 +246,17 @@ class ViewVideoPage extends React.Component {
               </div>
             </div>
             <div className="ViewVideo_description">
-              {this.props.currentVideo.kind==='stream'?this.state.liveDescription:this.props.currentVideo.description}
+              {this.props.currentVideo.kind === "stream"
+                ? this.state.liveDescription
+                : this.props.currentVideo.description}
             </div>
           </div>
           <div className="ViewVideo_rigth">
             <div className="ViewVideo_chats">
               <div style={{ marginBottom: "0.5em", fontSize: "1.5em" }}>
-                {this.props.currentVideo.kind==='stream'?'Live Chat':"Comments"}
+                {this.props.currentVideo.kind === "stream"
+                  ? "Live Chat"
+                  : "Comments"}
               </div>
               <div style={{ flex: 1 }}>
                 {this.state.comments &&
