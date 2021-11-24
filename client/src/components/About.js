@@ -22,10 +22,11 @@ export default function About({ routeChange }) {
                 <h3>Rathin R</h3>
                 <span>Web developer</span>
                 <p>
-                  MERN stack Developer.Expert in implementation of each step of
-                  the project. Eager to learn new technologies and
-                  methodologies. Worked on frontend part using React, CSS and
-                  JS.
+               
+                Worked on Injecting web3 and 
+                Authentication:Validation of Users (Registration and signin). 
+                Storing Videos on IPFS(dec. storage) by 
+                calling a smart contract and rendering them on Home Page.
                 </p>
               </div>
             </div>
