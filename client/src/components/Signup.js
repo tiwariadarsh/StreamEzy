@@ -164,7 +164,13 @@ class SignUp extends Component {
 
           signedUp: true,
         });
+
         this.props.accountCreated(this.state.signedUp);
+        window.localStorage.setItem("currentuser",{
+          address: this.props.account,
+          // email : this.state.email,
+
+        })
         return;
       }
     }
@@ -176,6 +182,7 @@ class SignUp extends Component {
   }
 
   render() {
+    console.log(this.state.signedUp)
     console.log(this.props);
     return (
       <div className="login-body">
@@ -208,7 +215,7 @@ class SignUp extends Component {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={this.state.Name}
+                  value={this.state.name}
                   autoComplete="Name"
                   className="inp"
                   onChange={(e) => this.setState({ name: e.target.value })}
