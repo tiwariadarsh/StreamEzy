@@ -4,6 +4,7 @@ import "../style/Navbar.css";
 export default function Navbarx({ routeChange }) {
   const handel_logout = () => {
     window.localStorage.removeItem("currentuser");
+    window.alert("User signed out");
     window.location.reload();
   };
   return (
@@ -42,7 +43,7 @@ export default function Navbarx({ routeChange }) {
 
 
         {
-        !window.localStorage.getItem("currentuser") && (
+        window.localStorage.getItem("currentuser") && (
           <div
             style={{ textDecoration: "none" }}
             onClick={() => routeChange("/profile")}

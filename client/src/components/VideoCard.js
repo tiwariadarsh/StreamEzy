@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/VideoCard.css";
-import HoverVideoPlayer from "react-hover-video-player";
+//import HoverVideoPlayer from "react-hover-video-player";
 //import video from '../assets/sample.mp4'
 import livePhoto from '../assets/livePhoto.jpg'
 

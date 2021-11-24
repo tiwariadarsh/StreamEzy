@@ -39,7 +39,7 @@ class ViewVideoPage extends React.Component {
     const userref = doc(
       db,
       "users",
-      JSON.parse(window.localStorage.getItem("currentuser"))["address"]
+      JSON.parse(window.localStorage.getItem("currentuser"))["address"] || "adarsh"
     );
     const userdata = await getDoc(userref);
     // console.log(this.state.liked);
@@ -163,7 +163,7 @@ class ViewVideoPage extends React.Component {
     };
 
     // console.log(this.state.author);
-    const { onRouteChange } = this.props;
+   // const { onRouteChange } = this.props;
     return (
       <>
         <div className="allVideoButton">
