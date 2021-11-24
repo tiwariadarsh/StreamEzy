@@ -154,6 +154,7 @@ class SignUp extends Component {
           .register(hash)
           .send({ from: this.props.account });
         window.alert("Signup successful");
+      
 
         this.setState({
           name: "",

@@ -91,8 +91,8 @@ class App extends Component {
 
   render() {
     // console.log(window.localStorage.getItem("currentuser"))
-    console.log(this.state.signedUp)
-    console.log(this.state.loggedIn)
+    // console.log(this.state.signedUp)
+    // console.log(this.state.loggedIn)
     
     const routeChange = (route) => {
       this.setState({ route });

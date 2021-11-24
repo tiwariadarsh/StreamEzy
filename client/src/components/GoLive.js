@@ -14,7 +14,8 @@ import { db } from "../firebase";
 // import ReactPlayer from 'react-player';
 
 export default function Viewpage({ routeChange }) {
-  console.log(routeChange);
+  
+  
   const [apiKey, setapiKey] = useState("ced26452-f2bd-4173-a0bc-93b4c19628c0");
   const [streamName, setStreamName] = useState("");
   const [streamCategory, setStreamCategory] = useState("");
