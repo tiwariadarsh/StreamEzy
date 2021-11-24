@@ -168,7 +168,7 @@ class SignUp extends Component {
         this.props.accountCreated(this.state.signedUp);
         window.localStorage.setItem("currentuser", {
           address: this.props.account,
-          // email : this.state.email,
+          email: this.state.email,
         });
         this.props.routeChange(`${this.props.route}`);
         return;

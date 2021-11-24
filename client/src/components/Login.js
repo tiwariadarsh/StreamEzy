@@ -137,7 +137,7 @@ class Login extends Component {
 
           window.localStorage.setItem("currentuser", {
             address: this.props.account,
-            // email : this.state.email,
+            email: this.state.email,
           });
 
           this.props.userSignedIn(this.state.loggedIn, usernameToSend);
