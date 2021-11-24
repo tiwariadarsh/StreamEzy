@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 contract SuperChat {
 
-  uint totalDonations; // the amount of donations
+  uint totalSuperchat; // the amount of donations
   address payable owner; // contract creator's address
 
   //contract settings
@@ -17,8 +17,8 @@ contract SuperChat {
     require(success, "Failed to send money");
   }
 
-  // public function to return total of donations
-  function getTotalDonations() view public returns(uint) {
-    return totalDonations;
+  // public function to return total of supervhat received
+  function getTotalSuperChat() view public returns(uint) {
+    return totalSuperchat;
   }
 }
