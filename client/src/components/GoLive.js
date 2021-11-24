@@ -56,9 +56,10 @@ export default function Viewpage({ routeChange }) {
     const headers = {
       "content-type": "application/json",
       Authorization: `Bearer ${apiKey}`,
+      'Target-URL':`https://livepeer.com/api/stream`
     };
     axios
-      .post("https://livepeer.com/api/stream", params, { headers })
+      .post("https://streamzy-proxy.herokuapp.com/", params, { headers })//https://streamzy-proxy.herokuapp.com/
       .then((response) => {
         console.log(response);
         //todo : replace address of current user 

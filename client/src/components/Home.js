@@ -112,9 +112,10 @@ class Home extends Component {
       const headers = {
         "content-type": "application/json",
         Authorization: `Bearer ${apiKey}`,
+        'Target-URL':`https://livepeer.com/api/stream?streamsonly=1`
       };
       axios
-      .get(`https://livepeer.com/api/stream?streamsonly=1`, { headers })
+      .get(`https://streamzy-proxy.herokuapp.com/`, { headers })
       .then(result=>{
         console.log(result.data);
           var streams = [];
@@ -126,7 +127,7 @@ class Home extends Component {
                 key={i}
                 onRouteChange={this.onRouteChange}
                 onVideoView={this.onVideoView}
-                imglink={'https://thumbs.dreamstime.com/b/live-stream-sign-red-symbol-button-streaming-broadcasting-online-emblem-tv-shows-social-media-performances-181782944.jpg'}
+                imglink={'stream'}
                 title={result.data[i].name}
                 videoLink={videoLink}
                 videoObj={result.data[i]}
