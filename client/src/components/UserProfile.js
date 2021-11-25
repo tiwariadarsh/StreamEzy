@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../style/UserProfile.css";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc,updateDoc  } from "firebase/firestore";
 import { db } from "../firebase";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import VideoCard from "./VideoCard";
 
 export default function UserProfile() {
-  const [address, setaddress] = useState("address");
+  const [address, setaddress] = useState(null);
   const [name, setname] = useState("");
   const [dob, setdob] = useState("");
   const [bio, setbio] = useState("");
@@ -16,6 +16,8 @@ export default function UserProfile() {
   const [displaybio, setdisplaybio] = useState("Loading..");
   const [displaydob, setdisplaydob] = useState("Loading..");
   const [displaysubscribe, setdisplaysubscribe] = useState(0);
+
+  const [currentuser, setcurrentuser] = useState(null)
 
   const loadUserDetails = async () => {
     try {
@@ -26,38 +28,46 @@ export default function UserProfile() {
       setdisplaysubscribe(docSnap.data().subscribers?.length);
       setdisplaybio(docSnap.data().bio);
       setdisplaydob(docSnap.data().dob);
-      // window.localStorage.setItem(
-      //   "currentuser",
-      //   JSON.stringify(docSnap.data())
-      // );
+      window.localStorage.setItem('currentuser',JSON.stringify(docSnap.data()))
     } catch (error) {
       alert(error.message);
     }
   };
 
   useEffect(() => {
-    loadUserDetails();
+    setcurrentuser(JSON.parse(window.localStorage.getItem('currentuser')))
   }, []);
 
-  const updateDetails = async () => {
+  useEffect(() => {
+    if(currentuser){
+      setaddress(currentuser.address)
+    }
+  }, [currentuser]);
+
+  useEffect(() => {
+    if(address){
+      loadUserDetails();
+    }
+  }, [address])
+
+  const updateDetails = async (event) => {
+    event.preventDefault()
     try {
-      const docRef = await setDoc(doc(db, "users", address), {
+      const docRef = await updateDoc(doc(db, "users", address), {
         name:name,
         dob:dob,
-        bio:bio,
-        address:address
+        bio:bio
       });
       setdob("");
       setname("");
       setbio("");
       loadUserDetails();
+      const newU = await getDoc(doc(db,'users',address));
+      window.localStorage.setItem('currentuser',JSON.stringify(newU.data()))
     } catch (error) {
       alert(error.message);
     }
   };
-
-
-  
 
   return (
     <div
@@ -114,7 +124,7 @@ export default function UserProfile() {
                     onChange={(e) => setdob(e.target.value)}
                     placeholder="Date of Birth"
                   />
-                  <input type="submit" onClick={updateDetails} value="SUBMIT" />
+                  <input type="submit" onClick={(event)=>updateDetails(event)} value="SUBMIT" />
                 </form>
               </Popup>
             </div>

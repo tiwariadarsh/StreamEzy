@@ -65,6 +65,7 @@ export default function Viewpage({ routeChange }) {
         console.log(response);
         //todo : replace address of current user 
         setDoc(doc(db, "videos", response.data.id), {
+          streamCreator:JSON.parse(window.localStorage.getItem('currentuser')).address,
           stream:{
             streamName:streamName,
             streamCategory:streamCategory,
@@ -75,6 +76,7 @@ export default function Viewpage({ routeChange }) {
         document.querySelector(".loader").style.display = "none";
         console.log(response.data);
         setStreamData(response.data);
+        window.localStorage.setItem('currentStream',JSON.stringify(response.data))
         setstreamCreated(true);
       })
       .catch((error) => {
@@ -194,15 +196,6 @@ export default function Viewpage({ routeChange }) {
 
   return (
     <div className="GoLive">
-      {/* <ReactPlayer
-          url={streamurl}
-          controls
-        /> */}
-      {/* <ReactPlayer
-          url={`https://cdn.livepeer.com/hls/${streamData.playbackId}/index.m3u8`}
-          controls
-        /> */}
-      {/* {renderSwitch(divActive)} */}
       <div className="loader">
         <img src={loader} alt="Loading.." />
       </div>

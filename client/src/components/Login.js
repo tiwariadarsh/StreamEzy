@@ -1,6 +1,8 @@
 //import { Link } from 'react-router-dom';
 import React, { Component } from "react";
 import AuthValidation from "../utils/AuthValidation";
+import { doc, getDoc } from "firebase/firestore"; 
+import { db } from "../firebase";
 
 import "../style/Loginpage.css";
 const abi = [
@@ -134,11 +136,10 @@ class Login extends Component {
 
             loggedIn: true,
           });
-
-          window.localStorage.setItem("currentuser", {
-            address: this.props.account,
-            email: this.state.email,
-          });
+          console.log(this.props.account);
+          const user = await getDoc(doc(db,'users',this.props.account));
+          console.log(user);
+          window.localStorage.setItem("currentuser", JSON.stringify(user.data()));
 
           this.props.userSignedIn(this.state.loggedIn, usernameToSend);
           this.props.routeChange(`${this.props.route}`);

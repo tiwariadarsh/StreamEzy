@@ -2,6 +2,8 @@ import React, { Component } from "react";
 //import { Link } from 'react-router-dom';
 import AuthenticationHash from "../utils/AuthenticationHash";
 import "../style/Loginpage.css";
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from "../firebase";
 
 const abi = [
   {
@@ -166,10 +168,18 @@ class SignUp extends Component {
         });
 
         this.props.accountCreated(this.state.signedUp);
-        window.localStorage.setItem("currentuser", {
+        setDoc(doc(db, "users", this.props.account), {
+          email: email,
+          name:name,
+          likedVideos:[],
+          subscribers:[],
+          address:this.props.account
+        })
+        window.localStorage.setItem("currentuser", JSON.stringify({
           address: this.props.account,
-          email: this.state.email,
-        });
+          email: email,
+          name:name,
+        }));
         this.props.routeChange(`${this.props.route}`);
         return;
       }

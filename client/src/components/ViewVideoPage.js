@@ -68,7 +68,7 @@ class ViewVideoPage extends React.Component {
     onSnapshot(videoRef, (videoData) => {
       // console.log(authorData.data());
       this.setState({
-        liveDescription: videoData.data().stream.streamDescription,
+        liveDescription: videoData.data().stream?.streamDescription,
       });
       this.setState({ comments: videoData.data().comments });
       this.setState({ likes: videoData.data().likes });
