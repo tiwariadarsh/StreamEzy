@@ -98,35 +98,46 @@ To achieve this we are building a P2P infrastructure that interacts through
 
 ### View Video
 
-![image](https://user-images.githubusercontent.com/57039707/143575115-72e56cc6-b4ee-406d-8fcb-561d81182d36.png)
+![viewVideo2](https://user-images.githubusercontent.com/57039707/143578860-0aaf5b41-eaab-484d-8bfd-123162ad2236.JPG)
+![viewVideo3](https://user-images.githubusercontent.com/57039707/143578932-d3359de5-db57-470f-be3c-118f0d13a4c7.JPG)
+
 
 ### Like, Share, Comment and Subscribe
 
 ![image](https://user-images.githubusercontent.com/57039707/143575723-55525e1f-dadf-4bc4-bea0-db8a558538e1.png)
 
+
 ### Upload Video
 
 ![UploadVideo](https://user-images.githubusercontent.com/57039707/143574456-dcda83cc-d850-4c33-aaab-e7fc0bc09032.JPG)
 
+
 ### Go Live
+
 ![GoLive](https://user-images.githubusercontent.com/57039707/143574519-aebb11b1-079d-4c65-aad4-52722a31483e.JPG)
 ![image](https://user-images.githubusercontent.com/57039707/143574622-ebbd51c5-8d56-497f-ba8b-a0e5a489613e.png)
 ![image](https://user-images.githubusercontent.com/57039707/143574759-dafc2435-57d4-4f7f-aefe-36ee73fdf2f5.png)
+![image](https://user-images.githubusercontent.com/57039707/143578060-bffbd92d-626f-437f-bb46-31b5e921ebc6.png)
+
 
 
 ### Profile
 
 ![image](https://user-images.githubusercontent.com/57039707/143575275-74fba285-0b45-4e51-bd6e-87ea8b8091b3.png)
 
+
 ### Videos uploaded by user
 
 ![image](https://user-images.githubusercontent.com/57039707/143575455-a3b47adb-2cee-4078-bd68-16b8f7359f09.png)
 
+### Edit your details
+
+![image](https://user-images.githubusercontent.com/57039707/143577269-0ef51656-b352-4c4f-914d-b45c91c71b4b.png)
+
+
 
 ### About Us
-
-![About](https://user-images.githubusercontent.com/57039707/143574371-ea80056a-be19-450e-abe1-8aa8aa8cb1ba.JPG)
-
+![image](https://user-images.githubusercontent.com/57039707/143577586-996b9353-8abc-44b1-a182-b8821bd46a06.png)
 
 
 ## License
