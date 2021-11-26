@@ -85,7 +85,7 @@ To achieve this we are building a P2P infrastructure that interacts through
   <code><img height="80" src="https://i.pinimg.com/originals/74/50/14/74501403f53a5ed702543483addd5e21.gif" title="Firebase"></code>
  </p>
  
- ## Metamask not found?
+ ##  Metamask not found?
  ![metamask not found](https://user-images.githubusercontent.com/62543734/143604212-5be55a63-8628-4d07-b10f-a575c771a274.gif)
 
  
