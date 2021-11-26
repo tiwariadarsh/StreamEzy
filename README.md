@@ -83,6 +83,51 @@ To achieve this we are building a P2P infrastructure that interacts through
   <code><img height="80" src="https://c.tenor.com/0lTLZKwxmjQAAAAC/octopus-cute.gif" title="React-Testing-Library"></code>
   <code><img height="80" src="https://i.pinimg.com/originals/74/50/14/74501403f53a5ed702543483addd5e21.gif" title="Firebase"></code>
  </p>
+ 
+## Design
+### Landing Page
+![Home (1)](https://user-images.githubusercontent.com/57039707/143573758-44d0972e-db11-4dc8-8ba3-6d5727034e60.JPG)
+
+
+### User Register
+![Register](https://user-images.githubusercontent.com/57039707/143573949-b75c5c10-55a6-4d7c-af2a-457df9efba63.JPG)
+
+### Login
+
+![Login](https://user-images.githubusercontent.com/57039707/143574274-2c411af4-bc59-468f-a3da-2cd3a4826c36.JPG)
+
+### View Video
+
+![image](https://user-images.githubusercontent.com/57039707/143575115-72e56cc6-b4ee-406d-8fcb-561d81182d36.png)
+
+### Like, Share, Comment and Subscribe
+
+![image](https://user-images.githubusercontent.com/57039707/143575723-55525e1f-dadf-4bc4-bea0-db8a558538e1.png)
+
+### Upload Video
+
+![UploadVideo](https://user-images.githubusercontent.com/57039707/143574456-dcda83cc-d850-4c33-aaab-e7fc0bc09032.JPG)
+
+### Go Live
+![GoLive](https://user-images.githubusercontent.com/57039707/143574519-aebb11b1-079d-4c65-aad4-52722a31483e.JPG)
+![image](https://user-images.githubusercontent.com/57039707/143574622-ebbd51c5-8d56-497f-ba8b-a0e5a489613e.png)
+![image](https://user-images.githubusercontent.com/57039707/143574759-dafc2435-57d4-4f7f-aefe-36ee73fdf2f5.png)
+
+
+### Profile
+
+![image](https://user-images.githubusercontent.com/57039707/143575275-74fba285-0b45-4e51-bd6e-87ea8b8091b3.png)
+
+### Videos uploaded by user
+
+![image](https://user-images.githubusercontent.com/57039707/143575455-a3b47adb-2cee-4078-bd68-16b8f7359f09.png)
+
+
+### About Us
+
+![About](https://user-images.githubusercontent.com/57039707/143574371-ea80056a-be19-450e-abe1-8aa8aa8cb1ba.JPG)
+
+
 
 ## License
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
