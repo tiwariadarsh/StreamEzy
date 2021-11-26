@@ -1,3 +1,4 @@
+<div id="top"></div>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -84,6 +85,10 @@ To achieve this we are building a P2P infrastructure that interacts through
   <code><img height="80" src="https://i.pinimg.com/originals/74/50/14/74501403f53a5ed702543483addd5e21.gif" title="Firebase"></code>
  </p>
  
+ ## Metamask not found?
+ ![metamask not found](https://user-images.githubusercontent.com/62543734/143604212-5be55a63-8628-4d07-b10f-a575c771a274.gif)
+
+ 
 ## Design
 ### Landing Page
 ![Home (1)](https://user-images.githubusercontent.com/57039707/143573758-44d0972e-db11-4dc8-8ba3-6d5727034e60.JPG)
@@ -142,6 +147,8 @@ To achieve this we are building a P2P infrastructure that interacts through
 
 ## License
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/tiwariadarsh/StreamEzy.svg?style=for-the-badge
 [contributors-url]:  https://github.com/tiwariadarsh/StreamEzy/graphs/contributors
