@@ -51,9 +51,12 @@ export default function About({ routeChange }) {
                 <h3>Ankit Rastogi</h3>
                 <span>Web developer</span>
                 <p>
-                  Worked on Livepeer APIs, backend part of the platform using
-                  IPFS, Smart Contracts, Firebase and also contributed on the
-                  frontend part in Home Page, Go Live page and Nav Bar
+                  Worked on the backend part of the project using various tech such as
+                  IPFS,Smart Contracts,Livepeer Implemented live streaming feature using Livepeer which is a Ethereumbased protocol that distributes video transcoding work throughout its
+                  decentralized network.Worked on smart contracts of uploading videos, and authenticating
+                  users using smart contracts.Also worked on IPFS to store Videos and
+                  Photos.Worked on frontend part of the project such as Go-Live page, Home
+                  Page, View Video Page
                 </p>
               </card>
             </div>

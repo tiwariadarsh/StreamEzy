@@ -107,3 +107,18 @@
   background-size: cover;
   background-position: center center;
 }
+
+.card-body{
+  height: 37vh;
+  overflow: hidden;
+}
+
+.card p{
+  height: 100%;
+  overflow: auto;
+}
+
+.card p::-webkit-scrollbar {
+  width: 0px;
+  height: 0;
+}
