@@ -142,7 +142,7 @@ To achieve this we are building a P2P infrastructure that interacts through
 
 
 ### About Us
-![image](About.JPG)
+![image](https://user-images.githubusercontent.com/55028717/143718984-864e529f-b1c0-4a71-94a2-578340b0f43e.JPG)
 
 
 ## License
