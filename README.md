@@ -142,7 +142,8 @@ To achieve this we are building a P2P infrastructure that interacts through
 ![image](https://user-images.githubusercontent.com/57039707/143577269-0ef51656-b352-4c4f-914d-b45c91c71b4b.png)
 
 ### ABOUT US
-![About](https://user-images.githubusercontent.com/62543734/154793745-34d28a09-0417-4754-b819-8c939350cef0.JPG)
+![About (1)](https://user-images.githubusercontent.com/62543734/154794358-30c1e403-7544-4f09-a669-d1e0001b62d0.JPG)
+
 
 
 
