@@ -84,7 +84,11 @@ To achieve this we are building a P2P infrastructure that interacts through
   <code><img height="80" src="https://c.tenor.com/0lTLZKwxmjQAAAAC/octopus-cute.gif" title="React-Testing-Library"></code>
   <code><img height="80" src="https://i.pinimg.com/originals/74/50/14/74501403f53a5ed702543483addd5e21.gif" title="Firebase"></code>
  </p>
+
+ ## MetaMask Not Found?
  
+![](https://user-images.githubusercontent.com/62543734/154793558-f36d06aa-5eaa-4021-b8a1-8dd4b5a94778.gif)
+
 
  
 ## Design
@@ -137,6 +141,8 @@ To achieve this we are building a P2P infrastructure that interacts through
 
 ![image](https://user-images.githubusercontent.com/57039707/143577269-0ef51656-b352-4c4f-914d-b45c91c71b4b.png)
 
+### ABOUT US
+![About](https://user-images.githubusercontent.com/62543734/154793745-34d28a09-0417-4754-b819-8c939350cef0.JPG)
 
 
 
