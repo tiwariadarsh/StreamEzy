@@ -23,7 +23,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/tiwariadarsh/StreamEzy">View demo</a>
+  <a href="https://github.com/tiwariadarsh/StreamEzy">View Demo</a>
   .
     <a href="https://github.com/tiwariadarsh/StreamEzy/issues">Report Bug</a>
     ·
@@ -85,15 +85,6 @@ To achieve this we are building a P2P infrastructure that interacts through
   <code><img height="80" src="https://i.pinimg.com/originals/74/50/14/74501403f53a5ed702543483addd5e21.gif" title="Firebase"></code>
  </p>
  
- ## Video Demo
-
-https://user-images.githubusercontent.com/55028717/143735437-a929d45c-a495-4ccc-9ce5-e89c459837f3.mp4
-
-
-
- 
- ## Metamask not found?
- ![metamask not found](https://user-images.githubusercontent.com/62543734/143604212-5be55a63-8628-4d07-b10f-a575c771a274.gif)
 
  
 ## Design
@@ -148,8 +139,7 @@ https://user-images.githubusercontent.com/55028717/143735437-a929d45c-a495-4ccc-
 
 
 
-### About Us
-![image](https://user-images.githubusercontent.com/55028717/143718984-864e529f-b1c0-4a71-94a2-578340b0f43e.JPG)
+
 
 
 ## License
