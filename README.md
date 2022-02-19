@@ -23,7 +23,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/tiwariadarsh/StreamEzy">View demo</a>
+  <a href="https://github.com/tiwariadarsh/StreamEzy">View Demo</a>
   .
     <a href="https://github.com/tiwariadarsh/StreamEzy/issues">Report Bug</a>
     ·
